@@ -4,3 +4,8 @@
 .submit {
     margin: 20px;
 }
+.error {
+    font-size: 12px;
+    color: #E53E3E;
+    margin-top: 0.25rem;
+  }
