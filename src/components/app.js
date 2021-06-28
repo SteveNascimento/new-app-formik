@@ -8,19 +8,19 @@ import './app.css'
 const { Header, Content, Sider } = Layout;
 
 export default function app() {
-    return(
+    return (
         <Layout>
             <Header className="header" title="Cadastro de Paciente">
-                <h1 style={{color:'#fff'}}> Guia de Resumo de Internação </h1>
+                <h3 style={{ color: '#fff' }}> Guia de Resumo de Internação </h3>
             </Header>
             <Layout>
                 <Layout>
                     <Content className="form">
-                        <Form/>
+                        <Form />
                     </Content>
                 </Layout>
-                <Sider width={300} className="aside" theme="light">
-                    <Aside/>
+                <Sider width={200} className="aside" theme="light">
+                    <Aside />
                 </Sider>
             </Layout>
         </Layout>

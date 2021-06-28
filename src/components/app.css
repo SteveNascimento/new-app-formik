@@ -2,3 +2,9 @@
     padding: 30px;
     min-height: 90vh;
 }
+
+@media only screen and (max-width: 960px) {
+    .aside {
+        display: none;
+    }
+}
