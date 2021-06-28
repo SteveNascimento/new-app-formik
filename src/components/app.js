@@ -11,17 +11,17 @@ export default function app() {
     return(
         <Layout>
             <Header className="header" title="Cadastro de Paciente">
-                <h1 style={{color:'#fff'}}> Cadastro de Paciente </h1>
+                <h1 style={{color:'#fff'}}> Guia de Resumo de Internação </h1>
             </Header>
             <Layout>
-                <Sider width={300} className="aside" theme="light">
-                    <Aside/>
-                </Sider>
                 <Layout>
                     <Content className="form">
                         <Form/>
                     </Content>
                 </Layout>
+                <Sider width={300} className="aside" theme="light">
+                    <Aside/>
+                </Sider>
             </Layout>
         </Layout>
     )

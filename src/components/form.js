@@ -6,8 +6,6 @@ import * as Yup from 'yup';
 import './form.css'
 import * as Service from '../services/submit-service'
 
-const { Panel } = Collapse;
-
 const MyTextInput = ({...props}) => {
     const [field, meta] = useField(props)
     return (
@@ -21,7 +19,7 @@ const MyTextInput = ({...props}) => {
 }
 
 const MyDateInput = ({...props}) => {
-    const meta = useField(props)[1]
+    const [field, meta] = useField(props)
     return (
         <>
             <DatePicker {...props} />
@@ -67,9 +65,6 @@ export default function Forms() {
         name:"Steve"
     }
     
-    const changeForm = (key) => {
-    }
-    
     const submit = async () => {
         setSending(true)
         await Service.submitForm(data)
@@ -92,43 +87,14 @@ export default function Forms() {
                 validationSchema={formSchema}
             >
                 <Form>
-
-                    <Collapse onChange={changeForm}>
-                            <Panel header="Informações do Paciente" key="1">
-                                <Descriptions title="Paciente" bordered style={{padding:'10px'}}>
-                                        <Descriptions.Item label="Nome">
-                                            <MyTextInput name="nomePac" placeholder="Nome" type="text"/>
-                                        </Descriptions.Item>
-                                        <Descriptions.Item label="Data de Nascimento">
-                                            <MyDateInput name="dataNascPac" placeholder="Data de Nascimento" />
-                                        </Descriptions.Item>
-                                </Descriptions>
-                                <Descriptions title="Diagnóstico" bordered style={{padding:'10px'}}>
-                                    <Descriptions.Item label="Sintomas">
-                                        <MyTextInput name="sintomasPac" placeholder="Nome" type="text"/>
-                                    </Descriptions.Item>
-                                    <Descriptions.Item label="Início dos sintomas">
-                                        <MyDateInput name="inicioSintPac" placeholder="Inicio dos sintomas" />
-                                    </Descriptions.Item>
-                                </Descriptions>
-                            </Panel>
-                            <Panel header="Família do Paciente" key="2">
-                                <Descriptions title="Pais" bordered style={{padding:'10px'}}>
-                                    <Descriptions.Item label="Nome do Pai" span={2}>
-                                        <MyTextInput name="nomePai" placeholder="Nome" type="text"/>
-                                    </Descriptions.Item>
-                                    <Descriptions.Item label="Data de Nascimento">
-                                        <MyDateInput name="dataNascPai" placeholder="Data de Nascimento" />
-                                    </Descriptions.Item>
-                                    <Descriptions.Item label="Nome da Mãe" span={2}>
-                                        <MyTextInput name="nomeMae" placeholder="Nome" type="text"/>
-                                    </Descriptions.Item>
-                                    <Descriptions.Item label="Data de Nascimento">
-                                        <MyDateInput name="dataNascMae" placeholder="Data de Nascimento" />
-                                    </Descriptions.Item>
-                                </Descriptions>
-                            </Panel>
-                    </Collapse>
+                    <Descriptions title="Paciente" bordered >
+                            <Descriptions.Item label="Nome">
+                                <MyTextInput name="nomePac" placeholder="Nome" type="text"/>
+                            </Descriptions.Item>
+                            <Descriptions.Item label="Data de Nascimento">
+                                <MyDateInput name="dataNascPac" placeholder="Data de Nascimento" />
+                            </Descriptions.Item>
+                    </Descriptions>
                 </Form>
             </Formik>
             <Button loading={sending} type="primary" className="submit" onClick={submit}>Enviar</Button>
