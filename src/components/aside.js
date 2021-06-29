@@ -6,7 +6,7 @@ const { Link } = Anchor
 
 export default function Aside() {
     return (
-        <Anchor offsetTop={40} className="aside">
+        <Anchor offsetTop={50} targetOffset={100} className="aside">
             <Link href="#guia-resumo-internacao" title="Guia Resumo de Internação">
                 <Link href="#dados-do-beneficiario" title="Dados do Beneficiário" />
                 <Link href="#dados-do-contratado-executante" title="Dados do Contratado Executante" />
