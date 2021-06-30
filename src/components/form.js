@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-import { Descriptions, Button } from 'antd';
+import { Descriptions, Button, Divider } from 'antd';
 import { Formik, useField } from 'formik'
 import { Form, Input, Select, TimePicker, DatePicker } from 'formik-antd'
 import * as Yup from 'yup';
 import './form.css'
 import TableDec from './table-dec';
 import TableProc from './table-proc';
+import TableEquip from './table-equip'
+import TableDesp from './table-desp';
 import * as Service from '../services/submit-service'
 
 
@@ -46,6 +48,7 @@ export default function Forms() {
                 validationSchema={formSchema}
             >
                 <Form>
+                    <h2 style={{ textAlign: 'center', margin: "20px" }}>Guia de Resumo de Internação</h2>
                     <section id="guia-resumo-internacao">
                         <Descriptions style={{ margin: "10px 0px" }} bordered size="small" column={{ xxl: 4, xl: 3, lg: 2, md: 2, sm: 1, xs: 1 }}>
                             <Descriptions.Item label="1 - Registro ANS">
@@ -72,7 +75,8 @@ export default function Forms() {
                         </Descriptions>
                     </section>
                     <section id="dados-do-beneficiario">
-                        <Descriptions style={{ margin: "10px 0px" }} title="Dados do Beneficiário" bordered size="small" column={{ xxl: 4, xl: 3, lg: 2, md: 2, sm: 1, xs: 1 }}>
+                        <Divider orientation="left" style={{ fontSize: "20px", fontWeight: "bold" }}>Dados do Beneficiário</Divider>
+                        <Descriptions style={{ margin: "10px 0px" }} bordered size="small" column={{ xxl: 4, xl: 3, lg: 2, md: 2, sm: 1, xs: 1 }}>
                             <Descriptions.Item label="8 - Número da Carteira" >
                                 <MyTextInput name="numCart" type="text" />
                             </Descriptions.Item>
@@ -97,7 +101,8 @@ export default function Forms() {
                         </Descriptions>
                     </section>
                     <section id="dados-do-contratado-executante">
-                        <Descriptions style={{ margin: "10px 0px" }} title="Dados do Contratado Executante" bordered size="small" column={{ xxl: 4, xl: 3, lg: 2, md: 2, sm: 1, xs: 1 }}>
+                        <Divider orientation="left" style={{ fontSize: "20px", fontWeight: "bold" }}>Dados do Contratado Executante</Divider>
+                        <Descriptions style={{ margin: "10px 0px" }} bordered size="small" column={{ xxl: 4, xl: 3, lg: 2, md: 2, sm: 1, xs: 1 }}>
                             <Descriptions.Item label="13 - Código na Operadora/CNPJ">
                                 09306242000344
                             </Descriptions.Item>
@@ -110,7 +115,8 @@ export default function Forms() {
                         </Descriptions>
                     </section>
                     <section id="dados-da-internacao">
-                        <Descriptions style={{ margin: "10px 0px" }} title="Dados da Internação" bordered size="small" column={{ xxl: 4, xl: 3, lg: 2, md: 2, sm: 1, xs: 1 }}>
+                        <Divider orientation="left" style={{ fontSize: "20px", fontWeight: "bold" }}>Dados da Internação</Divider>
+                        <Descriptions style={{ margin: "10px 0px" }} bordered size="small" column={{ xxl: 4, xl: 3, lg: 2, md: 2, sm: 1, xs: 1 }}>
                             <Descriptions.Item label="16 - Caráter Internação" >
                                 <Select
                                     name="carInt"
@@ -225,7 +231,8 @@ export default function Forms() {
                         </Descriptions>
                     </section>
                     <section id="declaracoes">
-                        <Descriptions style={{ margin: "10px 0px" }} title="Declarações" bordered size="small" column={{ xxl: 4, xl: 3, lg: 2, md: 2, sm: 1, xs: 1 }}>
+                        <Divider orientation="left" style={{ fontSize: "20px", fontWeight: "bold" }}>Declarações</Divider>
+                        <Descriptions style={{ margin: "10px 0px" }} bordered size="small" column={{ xxl: 4, xl: 3, lg: 2, md: 2, sm: 1, xs: 1 }}>
                             <Descriptions.Item label="Tipo Declaracao" >
                                 <Select
                                     name="tipoDeDecl"
@@ -254,7 +261,8 @@ export default function Forms() {
                         <TableDec />
                     </section>
                     <section id="procedimentos-e-exames-realizados">
-                        <Descriptions style={{ margin: "10px 0px" }} title="Procedimentos e Exames Realizados" bordered size="small" column={{ xxl: 4, xl: 3, lg: 2, md: 2, sm: 1, xs: 1 }}>
+                        <Divider orientation="left" style={{ fontSize: "20px", fontWeight: "bold" }}>Procedimentos e Exames Realizados</Divider>
+                        <Descriptions style={{ margin: "10px 0px" }} bordered size="small" column={{ xxl: 4, xl: 3, lg: 2, md: 2, sm: 1, xs: 1 }}>
                             <Descriptions.Item label="34 - Data">
                                 <DatePicker name="dataProc" placeholder="Data" />
                             </Descriptions.Item>
@@ -302,12 +310,241 @@ export default function Forms() {
                             <Descriptions.Item label="44 - Valor Unitário - R$">
                                 <MyTextInput name="valorUnitProc" type="text" />
                             </Descriptions.Item>
-                            <Descriptions.Item label="44 - Valor Unitário - R$">
+                            <Descriptions.Item label="44 - Valor Total">
                                 Valor total
                             </Descriptions.Item>
                         </Descriptions>
-                        <Button loading={sending} style={{ float: 'right' }} type="primary" className="submit" onClick={submit}>Adicionar</Button>
+                        <Button size="small" loading={sending} type="primary" className="add" onClick={submit}>Adicionar</Button>
                         <TableProc />
+                    </section>
+                    <section id="identificacao-da-equipe">
+                        <Divider orientation="left" style={{ fontSize: "20px", fontWeight: "bold" }}>Identificação da equipe</Divider>
+                        <Descriptions style={{ margin: "10px 0px" }} bordered size="small" column={{ xxl: 4, xl: 3, lg: 2, md: 2, sm: 1, xs: 1 }}>
+                            <Descriptions.Item label="46 - Seq.Ref">
+                                <MyTextInput name="seqref" type="text" />
+                            </Descriptions.Item>
+                            <Descriptions.Item label="47 - Grau Part" >
+                                <Select
+                                    style={{ width: "100%" }}
+                                    name="grauPart"
+                                >
+                                    <Select.Option value={'00'}>Cirurgião</Select.Option>
+                                    <Select.Option value={'01'}>Primeiro Auxiliar</Select.Option>
+                                    <Select.Option value={'02'}>Segundo Auxiliar</Select.Option>
+                                    <Select.Option value={'03'}>Terceiro Auxiliar</Select.Option>
+                                    <Select.Option value={'04'}>Quarto Auxiliar</Select.Option>
+                                    <Select.Option value={'05'}>Instrumentador </Select.Option>
+                                    <Select.Option value={'06'}>Anestesista</Select.Option>
+                                    <Select.Option value={'07'}>Auxiliar de Anestesista</Select.Option>
+                                    <Select.Option value={'08'}>Consultor</Select.Option>
+                                    <Select.Option value={'09'}>Perfusionista</Select.Option>
+                                    <Select.Option value={'10'}>Pediatra na sala de parto</Select.Option>
+                                    <Select.Option value={'11'}>Auxiliar SADT</Select.Option>
+                                    <Select.Option value={'12'}>Clínico</Select.Option>
+                                    <Select.Option value={'13'}>Intensivista</Select.Option>
+                                </Select>
+                            </Descriptions.Item>
+                            <Descriptions.Item label="48 - Códio na Operadora/CPF">
+                                <MyTextInput name="codOpCPF" type="text" />
+                            </Descriptions.Item>
+                            <Descriptions.Item label="49 - Nome do Profissional">
+                                <MyTextInput name="nomeProfEquip" type="text" />
+                            </Descriptions.Item>
+                            <Descriptions.Item label="50 - Conselho Profissional">
+                                <MyTextInput name="nomeConsProfEquip" type="text" />
+                            </Descriptions.Item>
+                            <Descriptions.Item label="51 - Numero no Conselho">
+                                <MyTextInput name="numConselhoEquip" type="text" />
+                            </Descriptions.Item>
+                            <Descriptions.Item label="52 - UF">
+                                <MyTextInput name="ufEquip" type="text" />
+                            </Descriptions.Item>
+                            <Descriptions.Item label="53 - Código CBO">
+                                <MyTextInput name="codCboEquip" type="text" />
+                            </Descriptions.Item>
+                        </Descriptions>
+                        <Button size="small" loading={sending} type="primary" className="add" onClick={submit}>Adicionar</Button>
+                        <TableEquip />
+                    </section>
+                    <section >
+                        <Descriptions layout="vertical" style={{ margin: "10px 0px" }} bordered size="small" column={{ xxl: 4, xl: 3, lg: 2, md: 2, sm: 1, xs: 1 }}>
+                            <Descriptions.Item label="54 - Total Proced (R$)">
+                                R$: 4,00
+                            </Descriptions.Item>
+                            <Descriptions.Item label="55 - Total de Diárias">
+                                R$: 4,00
+                            </Descriptions.Item>
+                            <Descriptions.Item label="56 - Total Taxas/Aluguéis">
+                                R$: 4,00
+                            </Descriptions.Item>
+                            <Descriptions.Item label="57 - Total Materiais (R$)">
+                                R$: 4,00
+                            </Descriptions.Item>
+                            <Descriptions.Item label="58 - Total de OPME (R$)">
+                                R$: 4,00
+                            </Descriptions.Item>
+                            <Descriptions.Item label="59 - Total Medicamentos (R$)">
+                                R$: 4,00
+                            </Descriptions.Item>
+                            <Descriptions.Item label="60 - Total Gases (R$)">
+                                R$: 4,00
+                            </Descriptions.Item>
+                            <Descriptions.Item label="61 - Total (R$)">
+                                R$: 4.000,00
+                            </Descriptions.Item>
+                        </Descriptions>
+                        <Descriptions style={{ margin: "10px 0px" }} bordered size="small">
+                            <Descriptions.Item label="81 - Observação">
+                                <Input.TextArea name="finalObs" type="text" />
+                            </Descriptions.Item>
+                        </Descriptions>
+                    </section>
+                    <h2 id="guia-de-outras-despesas" style={{ textAlign: 'center', margin: "40px 0px" }}>Guia de Outras Despesas</h2>
+                    <section id="codigos-de-despesas-realizadas">
+                        <Divider orientation="left" style={{ fontSize: "20px", fontWeight: "bold" }}>Códigos de Despesas Realizadas</Divider>
+                        <Descriptions style={{ margin: "10px 0px" }} bordered size="small" column={{ xxl: 4, xl: 3, lg: 2, md: 2, sm: 1, xs: 1 }}>
+                            <Descriptions.Item label="6 - CD" >
+                                <Select
+                                    style={{ width: "100%" }}
+                                    name="cdRealizada"
+                                >
+                                    <Select.Option value={'1'}>1 - Gases Medicinais</Select.Option>
+                                    <Select.Option value={'2'}>2 - Medicamentos</Select.Option>
+                                    <Select.Option value={'3'}>3 - Materiais</Select.Option>
+                                    <Select.Option value={'4'}>4 - Taxas Diversas</Select.Option>
+                                    <Select.Option value={'5'}>5 - Diárias</Select.Option>
+                                    <Select.Option value={'6'}>6 - Aluguéis</Select.Option>
+                                    <Select.Option value={'7'}>7 - Taxas/Aluguéis</Select.Option>
+                                    <Select.Option value={'8'}>8 - OPME</Select.Option>
+                                </Select>
+                            </Descriptions.Item>
+                            <Descriptions.Item label="7 - Data" >
+                                <DatePicker name="dataDesp" placeholder="Data" />
+                            </Descriptions.Item>
+                            <Descriptions.Item label="8 - Hora Incial">
+                                <TimePicker name="horaInicioDesp" placeholder="Hora" />
+                            </Descriptions.Item>
+                            <Descriptions.Item label="9 - Hora Final">
+                                <TimePicker name="horaFimDesp" placeholder="Hora" />
+                            </Descriptions.Item>
+                            <Descriptions.Item label="10 - Tabela">
+                                <MyTextInput name="tabDesp" type="text" />
+                            </Descriptions.Item>
+                            <Descriptions.Item label="11 - Item">
+                                <MyTextInput name="itemDesp" type="text" />
+                            </Descriptions.Item>
+                            <Descriptions.Item label="12 - Qtde.">
+                                <MyTextInput name="qtdDesp" type="text" />
+                            </Descriptions.Item>
+                            <Descriptions.Item label="Unidade Medida" >
+                                <Select
+                                    style={{ width: "100%" }}
+                                    name="unidMedida"
+                                >
+                                    <Select.Option value={'1'}>Medicinais</Select.Option>
+                                    <Select.Option value="001">Ampola</Select.Option>
+                                    <Select.Option value="002">Bilhões de Unidades Internacionais</Select.Option>
+                                    <Select.Option value="003">Bisnaga</Select.Option>
+                                    <Select.Option value="004">Bolsa</Select.Option>
+                                    <Select.Option value="005">Caixa</Select.Option>
+                                    <Select.Option value="006">Cápsula</Select.Option>
+                                    <Select.Option value="007">Carpule</Select.Option>
+                                    <Select.Option value="008">Comprimido</Select.Option>
+                                    <Select.Option value="009">Dose</Select.Option>
+                                    <Select.Option value="010">Drágea</Select.Option>
+                                    <Select.Option value="011">Envelope</Select.Option>
+                                    <Select.Option value="012">Flaconete</Select.Option>
+                                    <Select.Option value="013">Frasco</Select.Option>
+                                    <Select.Option value="014">Frasco Ampola</Select.Option>
+                                    <Select.Option value="015">Galão</Select.Option>
+                                    <Select.Option value="016">Glóbulo</Select.Option>
+                                    <Select.Option value="017">Gotas</Select.Option>
+                                    <Select.Option value="018">Grama</Select.Option>
+                                    <Select.Option value="019">Litro</Select.Option>
+                                    <Select.Option value="020">Microgramas</Select.Option>
+                                    <Select.Option value="021">Milhões de Unidades Internacionais</Select.Option>
+                                    <Select.Option value="022">Miligrama</Select.Option>
+                                    <Select.Option value="023">Milímetro</Select.Option>
+                                    <Select.Option value="024">Óvulo</Select.Option>
+                                    <Select.Option value="025">Pastilha</Select.Option>
+                                    <Select.Option value="026">Lata</Select.Option>
+                                    <Select.Option value="027">Pérola</Select.Option>
+                                    <Select.Option value="028">Pílula</Select.Option>
+                                    <Select.Option value="029">Pote</Select.Option>
+                                    <Select.Option value="030">Quilograma</Select.Option>
+                                    <Select.Option value="031">Seringa</Select.Option>
+                                    <Select.Option value="032">Supositório</Select.Option>
+                                    <Select.Option value="033">Tablete </Select.Option>
+                                    <Select.Option value="034">Tubete</Select.Option>
+                                    <Select.Option value="035">Tubo</Select.Option>
+                                    <Select.Option value="036">Unidade</Select.Option>
+                                    <Select.Option value="037">Unidade Internacional </Select.Option>
+                                    <Select.Option value="038">Centímetro</Select.Option>
+                                    <Select.Option value="039">Conjunto</Select.Option>
+                                    <Select.Option value="040">Kit</Select.Option>
+                                    <Select.Option value="041">Maço</Select.Option>
+                                    <Select.Option value="042">Metro</Select.Option>
+                                    <Select.Option value="043">Pacote</Select.Option>
+                                    <Select.Option value="044">Peça</Select.Option>
+                                    <Select.Option value="045">Rolo</Select.Option>
+                                    <Select.Option value="046">Gray</Select.Option>
+                                    <Select.Option value="047">Centgray</Select.Option>
+                                    <Select.Option value="048">Par</Select.Option>
+                                    <Select.Option value="049">Adesivo Transdérmico</Select.Option>
+                                    <Select.Option value="050">Comprimido Efervecente</Select.Option>
+                                    <Select.Option value="051">Comprimido Mastigável</Select.Option>
+                                    <Select.Option value="052">Sache</Select.Option>
+                                </Select>
+                            </Descriptions.Item>
+                            <Descriptions.Item label="13 - % Red/Acrésc">
+                                <MyTextInput name="%redAcrescDesp" type="text" />
+                            </Descriptions.Item>
+                            <Descriptions.Item label="14 - Valor Unitário">
+                                <MyTextInput name="valorUnitDesp" type="text" />
+                            </Descriptions.Item>
+                            <Descriptions.Item label="15 - Valor Total">
+                                Valor total
+                            </Descriptions.Item>
+                            <Descriptions.Item label="16 - Descrição">
+                                <MyTextInput name="descrDesp" type="text" />
+                            </Descriptions.Item>
+                            <Descriptions.Item label="Reg. Anvisa">
+                                <MyTextInput name="regAnvisaDesp" type="text" />
+                            </Descriptions.Item>
+                            <Descriptions.Item label="Ref. Fabricante">
+                                <MyTextInput name="refFabriDesp" type="text" />
+                            </Descriptions.Item>
+                            <Descriptions.Item label="Aut. Funcionamento">
+                                <MyTextInput name="autFuncDesp" type="text" />
+                            </Descriptions.Item>
+                        </Descriptions>
+                        <Button size="small" loading={sending} type="primary" className="add" onClick={submit}>Adicionar</Button>
+                        <TableDesp />
+                    </section>
+                    <section >
+                        <Descriptions layout="vertical" style={{ margin: "10px 0px" }} bordered size="small" column={{ xxl: 4, xl: 3, lg: 2, md: 2, sm: 1, xs: 1 }}>
+                            <Descriptions.Item label="17 - Total Gases">
+                                R$: 4,00
+                            </Descriptions.Item>
+                            <Descriptions.Item label="18 - Total Medicamentos">
+                                R$: 4,00
+                            </Descriptions.Item>
+                            <Descriptions.Item label="19 - Total Materiais">
+                                R$: 4,00
+                            </Descriptions.Item>
+                            <Descriptions.Item label="20 - Total Taxas/Alugéis">
+                                R$: 4,00
+                            </Descriptions.Item>
+                            <Descriptions.Item label="21 - Total Diárias">
+                                R$: 4,00
+                            </Descriptions.Item>
+                            <Descriptions.Item label="22 - Total Total de OPME">
+                                R$: 4,00
+                            </Descriptions.Item>
+                            <Descriptions.Item label="23 - Total GERAL">
+                                R$: 4.500,00
+                            </Descriptions.Item>
+                        </Descriptions>
                     </section>
                 </Form>
             </Formik>
