@@ -1,6 +1,6 @@
 import React from 'react'
 import Aside from './aside'
-import Form from './form'
+import Form from './form/form'
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
 import './app.css'

@@ -1,0 +1,6 @@
+export const GUIA_SOLIC_INT = 'guiaSolictInt'
+export const GN_GUIA_PREST = 'gnGuiaPrest'
+export const DT_DE_AUT = 'dtDeAut'
+export const SENHA_GUI_RES_INT = 'senhaGuiResInt'
+export const VAL_DE_SENHA = 'valDeSenha'
+export const N_GUIA_OP = 'nGuiaOp'
