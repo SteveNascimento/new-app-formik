@@ -1,27 +1,36 @@
 import React from 'react'
-import { useField } from 'formik'
 import { Descriptions } from 'antd'
-import { Input } from 'formik-antd'
+import { FormItem, Input } from 'formik-antd'
 
 import {
-    GUIA_SOLIC_INT, GN_GUIA_PREST, DT_DE_AUT,
-    SENHA_GUI_RES_INT, VAL_DE_SENHA, N_GUIA_OP
+    _1REG_ANS, _3GUIA_SOLIC_INT, _2GN_GUIA_PREST, _4DT_DE_AUT,
+    _5SENHA_GUI_RES_INT, _6VAL_DE_SENHA, _7N_GUIA_OP
 } from '../fieldsNames'
 
 
 export default function FormResInt() {
 
-    const MyTextInput = ({ ...props }) => {
-        const [field, meta] = useField(props)
+    const MyTextInput = (props) => {
         return (
             <>
-                <Input {...field} {...props} />
-                {meta.touched && meta.error ? (
-                    <div className="error">{meta.error}</div>
-                ) : null}
+                <FormItem name={props.name}>
+                    <Input {...props} />
+                </FormItem>
             </>
         )
     }
+
+    const MyPasswordInput = (props) => {
+        return (
+            <>
+                <FormItem name={props.name}>
+                    <Input.Password {...props} />
+                </FormItem>
+            </>
+        )
+    }
+
+
 
 
     return (
@@ -31,22 +40,22 @@ export default function FormResInt() {
                     330281
                 </Descriptions.Item>
                 <Descriptions.Item label="3 - Guia Solicitação de Internação" >
-                    <MyTextInput name={GUIA_SOLIC_INT} type="text" />
+                    <MyTextInput name={_3GUIA_SOLIC_INT} type="text" />
                 </Descriptions.Item>
                 <Descriptions.Item label="2 - Nº Guia no Prestador" >
-                    <MyTextInput name={GN_GUIA_PREST} type="text" />
+                    <MyTextInput name={_2GN_GUIA_PREST} type="text" />
                 </Descriptions.Item>
                 <Descriptions.Item label="4 - Data da Autorização" >
-                    <MyTextInput name={DT_DE_AUT} type="text" />
+                    <MyTextInput name={_4DT_DE_AUT} type="text" />
                 </Descriptions.Item>
                 <Descriptions.Item label="5 - Senha" >
-                    <MyTextInput name={SENHA_GUI_RES_INT} type="text" />
+                    <MyPasswordInput name={_5SENHA_GUI_RES_INT} type="text" />
                 </Descriptions.Item>
                 <Descriptions.Item label="6 - Validade da Senha" >
-                    <MyTextInput name={VAL_DE_SENHA} type="text" />
+                    <MyTextInput name={_6VAL_DE_SENHA} type="text" />
                 </Descriptions.Item>
                 <Descriptions.Item label="7 - Nº Guia Operadora" >
-                    <MyTextInput name={N_GUIA_OP} type="text" />
+                    <MyTextInput name={_7N_GUIA_OP} type="text" />
                 </Descriptions.Item>
             </Descriptions>
         </section>
