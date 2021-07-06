@@ -21,7 +21,7 @@ export default function TableDec() {
             vltotal: 34.5,
         },
         {
-            key: '1',
+            key: '2',
             id: '1',
             data: `04-09-2001`,
             hrinicial: '13-32-23',
@@ -37,7 +37,7 @@ export default function TableDec() {
             vltotal: 34.5,
         },
         {
-            key: '1',
+            key: '3',
             id: '1',
             data: `04-09-2001`,
             hrinicial: '13-32-23',

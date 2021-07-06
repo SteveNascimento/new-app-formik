@@ -3,7 +3,7 @@ import { Descriptions, Divider } from 'antd'
 import { FormItem, Input } from 'formik-antd'
 
 import {
-    _13COD_OP_CNPJ, _14NOME_CONT, _15COD_CNES
+    /* _13COD_OP_CNPJ, */ _14NOME_CONT, /* _15COD_CNES */
 } from '../fieldsNames'
 
 

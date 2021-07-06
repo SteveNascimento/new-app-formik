@@ -3,7 +3,7 @@ import { Descriptions } from 'antd'
 import { FormItem, Input } from 'formik-antd'
 
 import {
-    _1REG_ANS, _3GUIA_SOLIC_INT, _2GN_GUIA_PREST, _4DT_DE_AUT,
+    /* _1REG_ANS, */ _3GUIA_SOLIC_INT, _2GN_GUIA_PREST, _4DT_DE_AUT,
     _5SENHA_GUI_RES_INT, _6VAL_DE_SENHA, _7N_GUIA_OP
 } from '../fieldsNames'
 
@@ -29,9 +29,6 @@ export default function FormResInt() {
             </>
         )
     }
-
-
-
 
     return (
         <section id="guia-resumo-internacao">

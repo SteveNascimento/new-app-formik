@@ -34,14 +34,14 @@ export default function TableDec() {
             key: 'tipoDec',
         },
         {
-            title: 'Número da declaração',
-            dataIndex: 'numDec',
-            key: 'numDec',
-        },
-        {
             title: 'Diagnótico de óbito',
             dataIndex: 'diagObit',
             key: 'diagObit',
+        },
+        {
+            title: 'Número da declaração',
+            dataIndex: 'numDec',
+            key: 'numDec',
         },
         {
             title: 'Óbito do RN',

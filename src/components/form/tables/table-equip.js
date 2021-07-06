@@ -17,7 +17,7 @@ export default function TableEquip() {
             codCbo: 23523542,
         },
         {
-            key: '1',
+            key: '2',
             id: 1,
             seqRefer: 23,
             grauPart: 'Cirurgião',
@@ -29,7 +29,7 @@ export default function TableEquip() {
             codCbo: 23523542,
         },
         {
-            key: '1',
+            key: '3',
             id: 1,
             seqRefer: 23,
             grauPart: 'Cirurgião',
