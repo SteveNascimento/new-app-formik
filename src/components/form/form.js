@@ -15,6 +15,9 @@ import FormDadInt from './sections/formDadInt'
 import FormDec from './sections/formDec'
 import FormProc from './sections/formProc'
 import FormId from './sections/formId'
+import FormTotals from './sections/formTotals'
+import FormOtherProc from './sections/formOtherProc'
+import FormTotalsOtherProc from './sections/formTotalsOtherProc'
 
 const Forms = () => {
 
@@ -44,6 +47,12 @@ const Forms = () => {
                     <FormDec />
                     <FormProc />
                     <FormId />
+                    <FormTotals />
+                    <h2 id="guia-de-outras-despesas" style={{ textAlign: 'center', margin: "40px 0px" }}>
+                        Guia de Outras Despesas
+                    </h2>
+                    <FormOtherProc />
+                    <FormTotalsOtherProc />
 
                     <SubmitButton loading={submting ? true : false} type="primary" htmlType="submit">
                         Enviar

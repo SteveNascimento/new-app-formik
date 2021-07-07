@@ -20,8 +20,8 @@ export default function TableDesp() {
             descr: 'Qualquer descrição',
         },
         {
-            key: '1',
-            id: '1',
+            key: '2',
+            id: '2',
             cd: '1 - Gases Medicinais',
             data: `04-09-2001`,
             hrInicial: '13-32-23',
@@ -35,8 +35,8 @@ export default function TableDesp() {
             descr: 'Qualquer descrição',
         },
         {
-            key: '1',
-            id: '1',
+            key: '3',
+            id: '3',
             cd: '1 - Gases Medicinais',
             data: `04-09-2001`,
             hrInicial: '13-32-23',
@@ -50,8 +50,8 @@ export default function TableDesp() {
             descr: 'Qualquer descrição',
         },
         {
-            key: '1',
-            id: '1',
+            key: '4',
+            id: '4',
             cd: '1 - Gases Medicinais',
             data: `04-09-2001`,
             hrInicial: '13-32-23',
@@ -65,8 +65,8 @@ export default function TableDesp() {
             descr: 'Qualquer descrição',
         },
         {
-            key: '1',
-            id: '1',
+            key: '5',
+            id: '5',
             cd: '1 - Gases Medicinais',
             data: `04-09-2001`,
             hrInicial: '13-32-23',

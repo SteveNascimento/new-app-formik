@@ -1,5 +1,5 @@
 import React from 'react'
-import { Descriptions, Divider } from 'antd'
+import { DatePicker, Descriptions, Divider } from 'antd'
 import { FormItem, Input, Select } from 'formik-antd'
 
 import {
@@ -30,7 +30,7 @@ export default function FormDadBenef() {
                     <MyTextInput name={_8NUM_CART} type="text" />
                 </Descriptions.Item>
                 <Descriptions.Item label="9 - Validade da Carteira" >
-                    <MyTextInput name={_9VAL_CART} type="text" />
+                    <DatePicker.MonthPicker name={_9VAL_CART} placeholder="Data" />
                 </Descriptions.Item>
                 <Descriptions.Item label="10 - Nome" >
                     <MyTextInput name={_10NOME_BENEF} type="text" />

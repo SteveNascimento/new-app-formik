@@ -50,20 +50,20 @@ export default function FormDadBenef() {
                         style={{ width: "100%" }}
                         name={_47GRAU_PART}
                     >
-                        <Select.Option value={'00'}>Cirurgião</Select.Option>
-                        <Select.Option value={'01'}>Primeiro Auxiliar</Select.Option>
-                        <Select.Option value={'02'}>Segundo Auxiliar</Select.Option>
-                        <Select.Option value={'03'}>Terceiro Auxiliar</Select.Option>
-                        <Select.Option value={'04'}>Quarto Auxiliar</Select.Option>
-                        <Select.Option value={'05'}>Instrumentador </Select.Option>
-                        <Select.Option value={'06'}>Anestesista</Select.Option>
-                        <Select.Option value={'07'}>Auxiliar de Anestesista</Select.Option>
-                        <Select.Option value={'08'}>Consultor</Select.Option>
-                        <Select.Option value={'09'}>Perfusionista</Select.Option>
-                        <Select.Option value={'10'}>Pediatra na sala de parto</Select.Option>
-                        <Select.Option value={'11'}>Auxiliar SADT</Select.Option>
-                        <Select.Option value={'12'}>Clínico</Select.Option>
-                        <Select.Option value={'13'}>Intensivista</Select.Option>
+                        <Select.Option value={0}>Cirurgião</Select.Option>
+                        <Select.Option value={1}>Primeiro Auxiliar</Select.Option>
+                        <Select.Option value={2}>Segundo Auxiliar</Select.Option>
+                        <Select.Option value={3}>Terceiro Auxiliar</Select.Option>
+                        <Select.Option value={4}>Quarto Auxiliar</Select.Option>
+                        <Select.Option value={5}>Instrumentador </Select.Option>
+                        <Select.Option value={6}>Anestesista</Select.Option>
+                        <Select.Option value={7}>Auxiliar de Anestesista</Select.Option>
+                        <Select.Option value={8}>Consultor</Select.Option>
+                        <Select.Option value={9}>Perfusionista</Select.Option>
+                        <Select.Option value={10}>Pediatra na sala de parto</Select.Option>
+                        <Select.Option value={11}>Auxiliar SADT</Select.Option>
+                        <Select.Option value={12}>Clínico</Select.Option>
+                        <Select.Option value={13}>Intensivista</Select.Option>
                     </Select>
                 </Descriptions.Item>
                 <Descriptions.Item label="48 - Códio na Operadora/CPF">

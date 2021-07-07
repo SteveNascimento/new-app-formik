@@ -75,9 +75,9 @@ export default function FormDadBenef() {
                         name={_41VIA_PROC}
                         placeholder="Via"
                     >
-                        <Select.Option value={'unica-via'}>Unica</Select.Option>
-                        <Select.Option value={'mesma-via'}>Mesma Via</Select.Option>
-                        <Select.Option value={'diferentes-vias'}>Diferentes Vias</Select.Option>
+                        <Select.Option value={1}>Unica</Select.Option>
+                        <Select.Option value={2}>Mesma Via</Select.Option>
+                        <Select.Option value={3}>Diferentes Vias</Select.Option>
                     </Select>
                 </Descriptions.Item>
                 <Descriptions.Item label="42 - Téc" >
@@ -85,8 +85,8 @@ export default function FormDadBenef() {
                         style={{ width: "100%" }}
                         name={_42TEC_PROC}
                     >
-                        <Select.Option value={'convencional'}>Convencional</Select.Option>
-                        <Select.Option value={'videolaparoscopia'}>Videolaparoscopia</Select.Option>
+                        <Select.Option value={1}>Convencional</Select.Option>
+                        <Select.Option value={2}>Videolaparoscopia</Select.Option>
                     </Select>
                 </Descriptions.Item>
                 <Descriptions.Item label="43 - % Red/Acrésc">

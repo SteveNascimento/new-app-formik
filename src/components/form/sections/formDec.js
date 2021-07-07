@@ -33,8 +33,8 @@ export default function FormDadBenef() {
                         name={_30TIPO_DE_DECL}
                         placeholder="Tipo de Declaração"
                     >
-                        <Select.Option value={'nascimento'}>Nascimento</Select.Option>
-                        <Select.Option value={'obito'}>Obito</Select.Option>
+                        <Select.Option value={1}>Nascimento</Select.Option>
+                        <Select.Option value={2}>Obito</Select.Option>
                     </Select>
                 </Descriptions.Item>
                 <Descriptions.Item label="31 - CID Óbito" >
