@@ -1,5 +1,5 @@
-import React from 'react'
-import { Descriptions, Divider } from 'antd'
+import React, { useState } from 'react'
+import { Descriptions, Divider, Button } from 'antd'
 import { FormItem, Input, Select } from 'formik-antd'
 import TableDec from './../tables/table-dec'
 
@@ -12,6 +12,17 @@ import {
 
 
 export default function FormDadBenef() {
+
+    const [adding, setAdding] = useState(false)
+
+    const adder = () => {
+        setAdding(true)
+        setTimeout(() => {
+            console.log('Dados adicionados a Tabela!');
+            setAdding(false)
+        }, 2000)
+
+    }
 
     const MyTextInput = (props) => {
         return (
@@ -53,6 +64,7 @@ export default function FormDadBenef() {
                     </Select>
                 </Descriptions.Item>
             </Descriptions>
+            <Button size="small" loading={adding} type="primary" className="add" onClick={adder}>Adicionar</Button>
             <TableDec />
         </section>
     )

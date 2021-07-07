@@ -2,13 +2,13 @@ import React from 'react'
 import { Descriptions } from 'antd'
 
 /* import {
-    _017TOTAL_GASES,
-    _018TOTAL_MEDC,
-    _019TOTAL_MAT,
-    _020TOTAL_TAXAS_ALUG,
-    _021TOTAL_DIAR,
-    _022TOTAL_OPME,
-    _023TOTAL,
+    _117TOTAL_GASES,
+    _118TOTAL_MEDC,
+    _119TOTAL_MAT,
+    _120TOTAL_TAXAS_ALUG,
+    _121TOTAL_DIAR,
+    _122TOTAL_OPME,
+    _123TOTAL,
 } from '../fieldsNames' */
 
 
@@ -32,7 +32,7 @@ export default function FormDadBenef() {
                 <Descriptions.Item label="21 - Total Diárias">
                     R$: 4,00
                 </Descriptions.Item>
-                <Descriptions.Item label="22 - Total Total de OPME">
+                <Descriptions.Item label="22 - Total de OPME">
                     R$: 4,00
                 </Descriptions.Item>
                 <Descriptions.Item label="23 - Total GERAL">

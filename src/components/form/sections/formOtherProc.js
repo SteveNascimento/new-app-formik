@@ -4,18 +4,18 @@ import { FormItem, Input, Select, TimePicker, DatePicker } from 'formik-antd'
 import TableDesp from './../tables/table-desp'
 
 import {
-    _006CD_REALIZADA,
-    _007DATA_DESP,
-    _008HORA_INICIO_DESP,
-    _009HORA_FIM_DESP,
-    _010TAB_DESP,
-    _011ITEM_DESP,
-    _012QTD_DESP,
+    _106CD_REALIZADA,
+    _107DATA_DESP,
+    _108HORA_INICIO_DESP,
+    _109HORA_FIM_DESP,
+    _110TAB_DESP,
+    _111ITEM_DESP,
+    _112QTD_DESP,
     UNID_MEDIDA,
-    _013RED_ACRESC_DESP,
-    _014VALOR_UNIT_DESP,
-    /* _015TOTAL, */
-    _016DESCR,
+    _113RED_ACRESC_DESP,
+    _114VALOR_UNIT_DESP,
+    /* _115TOTAL, */
+    _116DESCR,
     REG_ANVISA,
     REF_FABRIC,
     AUT_FUNC,
@@ -54,7 +54,7 @@ export default function FormDadBenef() {
                 <Descriptions.Item label="6 - CD" >
                     <Select
                         style={{ width: "100%" }}
-                        name={_006CD_REALIZADA}
+                        name={_106CD_REALIZADA}
                     >
                         <Select.Option value={'1'}>1 - Gases Medicinais</Select.Option>
                         <Select.Option value={'2'}>2 - Medicamentos</Select.Option>
@@ -67,22 +67,22 @@ export default function FormDadBenef() {
                     </Select>
                 </Descriptions.Item>
                 <Descriptions.Item label="7 - Data" >
-                    <DatePicker name={_007DATA_DESP} placeholder="Data" />
+                    <DatePicker name={_107DATA_DESP} placeholder="Data" />
                 </Descriptions.Item>
                 <Descriptions.Item label="8 - Hora Incial">
-                    <TimePicker name={_008HORA_INICIO_DESP} placeholder="Hora" />
+                    <TimePicker name={_108HORA_INICIO_DESP} placeholder="Hora" />
                 </Descriptions.Item>
                 <Descriptions.Item label="9 - Hora Final">
-                    <TimePicker name={_009HORA_FIM_DESP} placeholder="Hora" />
+                    <TimePicker name={_109HORA_FIM_DESP} placeholder="Hora" />
                 </Descriptions.Item>
                 <Descriptions.Item label="10 - Tabela">
-                    <MyTextInput name={_010TAB_DESP} type="text" />
+                    <MyTextInput name={_110TAB_DESP} type="text" />
                 </Descriptions.Item>
                 <Descriptions.Item label="11 - Item">
-                    <MyTextInput name={_011ITEM_DESP} type="text" />
+                    <MyTextInput name={_111ITEM_DESP} type="text" />
                 </Descriptions.Item>
                 <Descriptions.Item label="12 - Qtde.">
-                    <MyTextInput name={_012QTD_DESP} type="text" />
+                    <MyTextInput name={_112QTD_DESP} type="text" />
                 </Descriptions.Item>
                 <Descriptions.Item label="Unidade Medida" >
                     <Select
@@ -145,16 +145,16 @@ export default function FormDadBenef() {
                     </Select>
                 </Descriptions.Item>
                 <Descriptions.Item label="13 - % Red/Acrésc">
-                    <MyTextInput name={_013RED_ACRESC_DESP} type="text" />
+                    <MyTextInput name={_113RED_ACRESC_DESP} type="text" />
                 </Descriptions.Item>
                 <Descriptions.Item label="14 - Valor Unitário">
-                    <MyTextInput name={_014VALOR_UNIT_DESP} type="text" />
+                    <MyTextInput name={_114VALOR_UNIT_DESP} type="text" />
                 </Descriptions.Item>
                 <Descriptions.Item label="15 - Valor Total">
                     Valor total
                 </Descriptions.Item>
                 <Descriptions.Item label="16 - Descrição">
-                    <MyTextInput name={_016DESCR} type="text" />
+                    <MyTextInput name={_116DESCR} type="text" />
                 </Descriptions.Item>
                 <Descriptions.Item label="Reg. Anvisa">
                     <MyTextInput name={REG_ANVISA} type="text" />

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+/* import React, { useState } from 'react'
 import { Formik } from 'formik'
 import { Form, SubmitButton } from 'formik-antd'
 
@@ -26,7 +26,6 @@ const Forms = () => {
 
 
     return (
-
         <div>
             <Formik initialValues={defaultValues} validationSchema={validationSchema}
                 onSubmit={async (values) => {
@@ -65,3 +64,83 @@ const Forms = () => {
 }
 
 export default Forms
+ */
+
+import React from 'react'
+import { Form, Row, Col, Input, DatePicker, Divider, Switch } from 'antd'
+
+export default function Formttt() {
+    return (
+        <Form layout="vertical">
+            <Row gutter={[5, 10]} align="bottom">
+                <Col span={3}>
+                    <Form.Item label="1 - Registro ANS">
+                        <Input />
+                    </Form.Item>
+                </Col>
+                <Col span={3}>
+                    <Form.Item label="2 - Numero Guia Principal">
+                        <Input />
+                    </Form.Item>
+                </Col>
+                <Col span={3}>
+                    <Form.Item label="3 - Numero Guia Prestador">
+                        <Input placeholder="Teste" />
+                    </Form.Item>
+                </Col>
+                <Col span={3}>
+                    <Form.Item label="4 - Data de autorização">
+                        <DatePicker />
+                    </Form.Item>
+                </Col>
+                <Col span={3}>
+                    <Form.Item label="5 - senha">
+                        <Input />
+                    </Form.Item>
+                </Col>
+                <Col span={3}>
+                    <Form.Item label="6 - Data de Validade Senha">
+                        <DatePicker />
+                    </Form.Item>
+                </Col>
+                <Col span={3}>
+                    <Form.Item label="7 - Numero Guia Operadora">
+                        <Input />
+                    </Form.Item>
+                </Col>
+            </Row>
+            <Divider>Dados do Beneficiario</Divider>
+            <Row gutter={[5, 10]}>
+                <Col span={5}>
+                    <Form.Item label="8 - Numero da Carteira">
+                        <Input />
+                    </Form.Item>
+                </Col>
+                <Col span={4}>
+                    <Form.Item label="9 - Validade da Carteira">
+                        <DatePicker />
+                    </Form.Item>
+                </Col>
+                <Col offset={5} span={10}>
+                    <Form.Item label="10 - Nome">
+                        <Input />
+                    </Form.Item>
+                </Col>
+                <Col span={4}>
+                    <Form.Item label="11 - Cartao Nacional de Saude">
+                        <Input />
+                    </Form.Item>
+                </Col>
+                <Col span={3}>
+                    <Form.Item label="12 - Atendimento RN">
+                        <Switch
+                            defaultChecked
+                            checkedChildren={'sim'}
+                            unCheckedChildren={'não'}
+                        />
+                    </Form.Item>
+                </Col>
+            </Row >
+        </Form >
+    )
+}
