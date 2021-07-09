@@ -1,6 +1,7 @@
-/* import React, { useState } from 'react'
+import React, { useState } from 'react'
 import { Formik } from 'formik'
-import { Form, SubmitButton } from 'formik-antd'
+import { SubmitButton } from 'formik-antd'
+import { Form } from 'antd'
 
 import './form.css'
 import { validationSchema } from './validationSchema'
@@ -35,23 +36,13 @@ const Forms = () => {
                 }}
             >
 
-                <Form>
+                <Form layout="vertical">
                     <h2 style={{ textAlign: "center", margin: "20px" }}>
                         Guia de Resumo de Internação
                     </h2>
                     <FormResInt />
                     <FormDadBenef />
-                    <FormDadContr />
-                    <FormDadInt />
-                    <FormDec />
-                    <FormProc />
-                    <FormId />
-                    <FormTotals />
-                    <h2 id="guia-de-outras-despesas" style={{ textAlign: 'center', margin: "40px 0px" }}>
-                        Guia de Outras Despesas
-                    </h2>
-                    <FormOtherProc />
-                    <FormTotalsOtherProc />
+
 
                     <SubmitButton loading={submting ? true : false} type="primary" htmlType="submit">
                         Enviar
@@ -62,23 +53,34 @@ const Forms = () => {
         </div>
     )
 }
+{/* 
+                    <FormDadContr />
+                    <FormDadInt />
+                    <FormDec />
+                    <FormProc />
+                    <FormId />
+                    <FormTotals />
+                    <h2 id="guia-de-outras-despesas" style={{ textAlign: 'center', margin: "40px 0px" }}>
+                        Guia de Outras Despesas
+                    </h2>
+                    <FormOtherProc />
+                    <FormTotalsOtherProc /> */}
 
 export default Forms
- */
 
-import React from 'react'
+/* import React from 'react'
 import { Form, Row, Col, Input, DatePicker, Divider, Switch } from 'antd'
 
 export default function Formttt() {
     return (
         <Form layout="vertical">
             <Row gutter={[5, 10]} align="bottom">
-                <Col span={3}>
+                <Col span={20}>
                     <Form.Item label="1 - Registro ANS">
                         <Input />
                     </Form.Item>
                 </Col>
-                <Col span={3}>
+                <Col span={5}>
                     <Form.Item label="2 - Numero Guia Principal">
                         <Input />
                     </Form.Item>
@@ -143,4 +145,4 @@ export default function Formttt() {
             </Row >
         </Form >
     )
-}
+} */

@@ -1,5 +1,5 @@
 import React from 'react'
-import { DatePicker, Descriptions, Divider } from 'antd'
+import { DatePicker, Descriptions, Divider, Row, Col, Form } from 'antd'
 import { FormItem, Input, Select } from 'formik-antd'
 
 import {
@@ -22,9 +22,36 @@ export default function FormDadBenef() {
 
 
     return (
-        <section id="dados-do-beneficiario">
+        <>
             <Divider orientation="left" style={{ fontSize: "20px", fontWeight: "bold" }}>Dados do Beneficiário</Divider>
-            <Descriptions style={{ margin: "10px 0px" }} bordered size="small" column={{ xxl: 4, xl: 3, lg: 2, md: 2, sm: 1, xs: 1 }}>
+            <section id="dados-do-beneficiario">
+                <Row align='bottom'>
+                    <Col span={5} className='coluna'>
+                        <Form.Item label='8 - Número da Carteira'>
+                            <MyTextInput name={_8NUM_CART} type="text" />
+                        </Form.Item>
+                    </Col>
+                    <Col span={5} className='coluna'>
+                        <Form.Item label='9 - Validade da Carteira'>
+                            <MyTextInput name={_9VAL_CART} placeholder="Data" />
+                        </Form.Item>
+                    </Col>
+                    <Col span={8} className='coluna'>
+                        <Form.Item label='10 - Nome'>
+                            <MyTextInput name={_10NOME_BENEF} type="text" />
+                        </Form.Item>
+                    </Col>
+                </Row>
+
+            </section>
+        </>
+    )
+
+}
+
+
+
+/* <Descriptions style={{ margin: "10px 0px" }} bordered size="small" column={{ xxl: 4, xl: 3, lg: 2, md: 2, sm: 1, xs: 1 }}>
 
                 <Descriptions.Item label="8 - Número da Carteira" >
                     <MyTextInput name={_8NUM_CART} type="text" />
@@ -48,11 +75,4 @@ export default function FormDadBenef() {
                     </Select>
                 </Descriptions.Item>
 
-            </Descriptions>
-        </section>
-    )
-
-}
-
-
-
+            </Descriptions> */
