@@ -1,6 +1,6 @@
 import React from 'react'
-import { Descriptions, Divider } from 'antd'
-import { FormItem, Input } from 'formik-antd'
+import { Divider, Form, Row, Col } from 'antd'
+import { Input } from 'formik-antd'
 
 import {
     _13COD_OP_CNPJ, _14NOME_CONT, _15COD_CNES
@@ -9,31 +9,27 @@ import {
 
 export default function FormDadBenef() {
 
-    const MyTextInput = (props) => {
-        return (
-            <>
-                <FormItem name={props.name}>
-                    <Input {...props} />
-                </FormItem>
-            </>
-        )
-    }
-
 
     return (
         <section id="dados-do-contratado-executante">
-            <Divider orientation="left" style={{ fontSize: "20px", fontWeight: "bold" }}>Dados do Contratado Executante</Divider>
-            <Descriptions style={{ margin: "10px 0px" }} bordered size="small" column={{ xxl: 4, xl: 3, lg: 2, md: 2, sm: 1, xs: 1 }}>
-                <Descriptions.Item label="13 - Código na Operadora/CNPJ">
-                    <MyTextInput name={_13COD_OP_CNPJ} type="text" />
-                </Descriptions.Item>
-                <Descriptions.Item label="14 - Nome do Contratado" >
-                    <MyTextInput name={_14NOME_CONT} type="text" />
-                </Descriptions.Item>
-                <Descriptions.Item label="15 - Código CNES" span={1}>
-                    <MyTextInput name={_15COD_CNES} type="text" />
-                </Descriptions.Item>
-            </Descriptions>
+            <Divider orientation="left" style={{ marginBottom: '30px', fontSize: "20px", fontWeight: "bold" }}>Dados do Contratado Executante</Divider>
+            <Row align='bottom' gutter={[10, 10]}>
+                <Col className="coluna">
+                    <Form.Item name={_13COD_OP_CNPJ} label="13 - Código na Operadora/CNPJ">
+                        <Input name={_13COD_OP_CNPJ} type="text" />
+                    </Form.Item>
+                </Col>
+                <Col className="coluna">
+                    <Form.Item name={_14NOME_CONT} label="14 - Nome do Contratado" >
+                        <Input name={_14NOME_CONT} type="text" />
+                    </Form.Item>
+                </Col>
+                <Col className="coluna">
+                    <Form.Item name={_15COD_CNES} label="15 - Código CNES" span={1}>
+                        <Input name={_15COD_CNES} type="text" />
+                    </Form.Item>
+                </Col>
+            </Row>
         </section>
     )
 

@@ -4,13 +4,12 @@ import Form from './form/form'
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
 import './app.css'
-
 const { Header, Content, Sider } = Layout;
 
 export default function app() {
     return (
-        <Layout>
-            <Header className="header" title="Cadastro de Paciente">
+        <Layout className="layout">
+            <Header className="header">
                 <h3 style={{ color: '#fff' }}> Guia de Resumo de Internação </h3>
             </Header>
             <Layout>
