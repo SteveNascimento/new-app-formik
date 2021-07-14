@@ -48,7 +48,7 @@ export const defaultValues = {
     _42tecProc: 1,
     _43redAcresc: '',
     _44valorUnitProc: '',
-    _45valorTotProc: `R$: ${0.00.toFixed(2)}`,
+    _45valorTotProc: 0,
     // Section 6
     _46seqref: '',
     _47grauPart: 0,

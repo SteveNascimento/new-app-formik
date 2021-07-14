@@ -1,33 +1,21 @@
 import React from 'react'
-import { Table } from 'antd'
+import { Table, Popconfirm, Button } from 'antd'
+import { useStoreActions, useStoreState } from 'easy-peasy';
 
 export default function TableDec() {
 
-    const dataSource = [
-        {
-            key: '1',
-            tipoDec: 'Nascimento',
-            numDec: 32,
-            diagObit: 'Diagnóstico',
-            obitoRN: 'Sim',
-        },
-        {
-            key: '2',
-            tipoDec: 'Nascimento',
-            numDec: 32,
-            diagObit: 'Diagnóstico',
-            obitoRN: 'Sim',
-        },
-        {
-            key: '3',
-            tipoDec: 'Nascimento',
-            numDec: 32,
-            diagObit: 'Diagnóstico',
-            obitoRN: 'Sim',
-        },
-    ];
+    const dataSource = useStoreState(state => state.tableDec.decList)
+
+    const removeDecFromList = useStoreActions(
+        actions => actions.tableDec.removeFromList
+    )
 
     const columns = [
+        {
+            title: '',
+            dataIndex: 'key',
+            key: 'key',
+        },
         {
             title: 'Tipo da declaração',
             dataIndex: 'tipoDec',
@@ -48,7 +36,15 @@ export default function TableDec() {
             dataIndex: 'obitoRN',
             key: 'obitoRN',
         },
-    ];
+        {
+            title: '',
+            dataIndex: 'operation',
+            render: (_t, _r, index) =>
+                <Popconfirm title="Confirma apagar a declaração?" onConfirm={() => removeDecFromList(index)}>
+                    <Button type='ghost' >Apagar</Button>
+                </Popconfirm>
+        },
+    ]
 
     return (
         <Table bordered size="small" columns={columns} dataSource={dataSource} />

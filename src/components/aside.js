@@ -1,7 +1,5 @@
 import React from 'react'
 import { Anchor } from 'antd';
-import './aside.css'
-
 const { Link } = Anchor
 
 export default function Aside() {

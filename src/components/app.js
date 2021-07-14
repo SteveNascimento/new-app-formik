@@ -18,7 +18,7 @@ export default function app() {
                         <Form />
                     </Content>
                 </Layout>
-                <Sider width={200} className="aside" theme="light">
+                <Sider width={250} className="aside" theme="light">
                     <Aside />
                 </Sider>
             </Layout>
