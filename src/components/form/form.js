@@ -23,8 +23,6 @@ const Forms = () => {
 
     const [submting, setSubmiting] = useState(false)
 
-
-
     return (
         <div>
             <Formik initialValues={defaultValues} validationSchema={validationSchema}
@@ -33,9 +31,11 @@ const Forms = () => {
                     await submitForm(values)
                     setSubmiting(false)
                 }}
+
             >
 
-                <Form layout="vertical">
+                <Form layout="vertical"
+                >
                     <h2 style={{ textAlign: "center", margin: "20px" }}>
                         Guia de Resumo de Internação
                     </h2>
@@ -58,6 +58,7 @@ const Forms = () => {
                         Enviar
                     </SubmitButton>
                 </Form>
+
             </Formik>
         </div>
     )

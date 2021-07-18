@@ -2,35 +2,13 @@ import { action } from 'easy-peasy'
 
 
 const tableDecModel = {
-    decList: [
-        {
-            key: '1',
-            tipoDec: 'Nascimento',
-            numDec: 32,
-            diagObit: 'Diagnóstico',
-            obitoRN: 'Sim',
-        },
-        {
-            key: '2',
-            tipoDec: 'Nascimento',
-            numDec: 32,
-            diagObit: 'Diagnóstico',
-            obitoRN: 'Sim',
-        },
-        {
-            key: '3',
-            tipoDec: 'Nascimento',
-            numDec: 32,
-            diagObit: 'Diagnóstico',
-            obitoRN: 'Sim',
-        },
-    ],
+    decList: [],
 
     count: 3,
 
     addToList: action((state, payload) => {
         state.count += 1
-        payload.key = state.count
+        payload.id = state.count
         state.decList.push(payload)
     }),
 

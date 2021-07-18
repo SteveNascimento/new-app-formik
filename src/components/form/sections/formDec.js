@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Divider, Button, Row, Col } from 'antd'
+import React from 'react'
+import { Divider, Row, Col } from 'antd'
 import { Form, Input, Select } from 'formik-antd'
 import TableDec from './../tables/table-dec'
 
@@ -13,21 +13,10 @@ import {
 
 export default function FormDadBenef() {
 
-    const [adding, setAdding] = useState(false)
-
-    const adder = () => {
-        setAdding(true)
-        setTimeout(() => {
-            console.log('Dados adicionados a Tabela!');
-            setAdding(false)
-        }, 2000)
-
-    }
-
     return (
         <section id="declaracoes">
             <Divider orientation="left" style={{ fontSize: "20px", fontWeight: "bold" }}>Declarações</Divider>
-            <Row align='bottom' gutter={[20, 10]}>
+            <Row align='bottom' gutter={[20, 10]} >
                 <Col>
                     <Form.Item name={_30TIPO_DE_DECL} label="30 - Tipo Declaracao" >
                         <Select
@@ -61,9 +50,8 @@ export default function FormDadBenef() {
                     </Form.Item>
                 </Col>
             </Row>
-            <Button size="small" loading={adding} type="primary" className="add" onClick={adder}>Adicionar</Button>
             <TableDec />
-        </section>
+        </section >
     )
 
 }

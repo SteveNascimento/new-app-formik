@@ -61,9 +61,9 @@ export default function FormDadBenef() {
                 </Col>
             </Row>
             <Row align='bottom' gutter={[10, 10]}>
-                <Col>
+                <Col span={10}>
                     <Form.Item name={_81OBS_TOTAL} label="81 - Observação">
-                        <Input.TextArea name={_81OBS_TOTAL} type="text" />
+                        <Input.TextArea autoSize={true} name={_81OBS_TOTAL} type="text" />
                     </Form.Item>
                 </Col>
             </Row>

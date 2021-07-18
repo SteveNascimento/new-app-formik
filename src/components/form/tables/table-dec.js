@@ -1,6 +1,7 @@
 import React from 'react'
 import { Table, Popconfirm, Button } from 'antd'
 import { useStoreActions, useStoreState } from 'easy-peasy';
+import { PlusOutlined, DeleteOutlined } from '@ant-design/icons';
 
 export default function TableDec() {
 
@@ -10,11 +11,15 @@ export default function TableDec() {
         actions => actions.tableDec.removeFromList
     )
 
+    const addToList = useStoreActions(
+        actions => actions.tableDec.addToList
+    )
+
     const columns = [
         {
-            title: '',
-            dataIndex: 'key',
-            key: 'key',
+            title: 'Id',
+            dataIndex: 'id',
+            key: 'id',
         },
         {
             title: 'Tipo da declaração',
@@ -41,12 +46,29 @@ export default function TableDec() {
             dataIndex: 'operation',
             render: (_t, _r, index) =>
                 <Popconfirm title="Confirma apagar a declaração?" onConfirm={() => removeDecFromList(index)}>
-                    <Button type='ghost' >Apagar</Button>
+                    <Button type='ghost' ><DeleteOutlined /></Button>
                 </Popconfirm>
         },
     ]
 
     return (
-        <Table bordered size="small" columns={columns} dataSource={dataSource} />
+        <>
+            <Button
+                style={{ margin: '25px 10px', float: 'right' }}
+                onClick={() => {
+                    addToList({
+                        tipoDec: 'Nascimento',
+                        numDec: 32,
+                        diagObit: 'Diagnóstico',
+                        obitoRN: 'Sim',
+                    })
+                }}
+                type="primary"
+                size='small'
+            >
+                <PlusOutlined /> Adicionar
+            </Button>
+            <Table name='dec-table' rowKey={(row) => `${row.id}`} bordered size="small" columns={columns} dataSource={dataSource} />
+        </>
     )
 }
