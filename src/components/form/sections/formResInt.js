@@ -1,17 +1,38 @@
 import React from 'react'
-import { Row, Col, Input, Form, DatePicker } from 'antd'
+import { Row, Col, Input, Form, /* DatePicker */ } from 'antd'
+import { useFormContext, Controller } from 'react-hook-form'
 
 import {
-    _1REG_ANS, _3GUIA_SOLIC_INT, _2GN_GUIA_PREST, _4DT_DE_AUT,
-    _5SENHA_GUI_RES_INT, _6VAL_DE_SENHA, _7N_GUIA_OP
+    _1REG_ANS, _3GUIA_SOLIC_INT, /*_2GN_GUIA_PREST, _4DT_DE_AUT,
+    _5SENHA_GUI_RES_INT, _6VAL_DE_SENHA, _7N_GUIA_OP */
 } from '../fieldsNames'
 
 
 
-export default function FormResInt(props) {
+export default function FormResInt() {
+
+    /* const Controlador = () => (
+        <Controller
+            name="test"
+            render={({
+                field: { onChange, onBlur, value, name, ref },
+                fieldState: { invalid, isTouched, isDirty, error },
+                formState,
+            }) => (
+                <Input
+                onBlur={onBlur}
+                onChange={onChange}
+                checked={value}
+                inputRef={ref}
+                />
+            )}
+        />
+    ) */
+
+    const {register, setValue, formState: {errors}} = useFormContext();
 
     const getChangeHandlerWithValue = name => value => {
-        props.reg.setValue(name, value);
+        setValue(name, value);
     };
 
     return (
@@ -19,16 +40,18 @@ export default function FormResInt(props) {
             <Row align='bottom' gutter={[10, 10]}>
                 <Col className="coluna">
                     <Form.Item label="1 - Registro ANS">
-                        <Input {...props.reg.register(_1REG_ANS)} />
-                        <p>{props.reg.formState.errors._1regANS?.message}</p>
-                    </Form.Item>
-                </Col>
-                {/* <Col className="coluna">
-                    <Form.Item name={_3GUIA_SOLIC_INT} label="3 - Guia Solicitação de Internação">
-                        <Input {...props.reg.register(_3GUIA_SOLIC_INT)} />
+                        <Input onChange={getChangeHandlerWithValue(_1REG_ANS)} {...register(_1REG_ANS)} />
+                        <p>{errors._1REG_ANS?.message}</p>
+                        {/* <Controlador name={_1REG_ANS}/> */}
                     </Form.Item>
                 </Col>
                 <Col className="coluna">
+                    <Form.Item label="3 - Guia Solicitação de Internação">
+                        <Input onChange={getChangeHandlerWithValue(_3GUIA_SOLIC_INT)} {...register(_3GUIA_SOLIC_INT)} />
+                        <p>{errors._3GUIA_SOLIC_INT?.message}</p>
+                    </Form.Item>
+                </Col>
+                {/*<Col className="coluna">
                     <Form.Item name={_2GN_GUIA_PREST} label="2 - Nº Guia no Prestador">
                         <Input {...props.reg.register(_2GN_GUIA_PREST)} />
                     </Form.Item>

@@ -1,7 +1,5 @@
 import React from 'react'
-import { useForm } from 'react-hook-form'
-/* import { Formik } from 'formik' */
-/* import { SubmitButton, Form } from 'formik-antd' */
+import { useForm, FormProvider } from 'react-hook-form'
 import { Form, Button } from 'antd'
 import './form.css'
 import { validationSchema } from './validationSchema'
@@ -23,40 +21,42 @@ import FormTotalsOtherProc from './sections/formTotalsOtherProc' */
 const Forms = () => {
 
     const registro = useForm({
-        resolver: yupResolver(validationSchema)
+        mode:'onBlur',
+        resolver: yupResolver(validationSchema),
+        defaultValues: defaultValues
     })
 
     const onSubmit = (values) => {
         console.log(values);
-
     }
+
     return (
-        <Form layout="vertical"
-            onFinish={registro.handleSubmit(onSubmit)}
-        /* initialValues={defaultValues} */
+        <FormProvider {...registro} >
+            <Form layout="vertical"
+                onFinish={registro.handleSubmit(onSubmit)}
+            >
+                <h2 style={{ textAlign: "center", margin: "20px" }}>
+                    Guia de Resumo de Internação
+                </h2>
 
-        >
-            <h2 style={{ textAlign: "center", margin: "20px" }}>
-                Guia de Resumo de Internação
-            </h2>
+                <FormResInt />
 
-            <FormResInt reg={registro} />
+                {/* <FormDadBenef />
+                <FormDadContr />
+                <FormDadInt />
+                <FormDec />
+                <FormProc />
+                <FormId />
+                <FormTotals />
 
-            {/* <FormDadBenef />
-            <FormDadContr />
-            <FormDadInt />
-            <FormDec />
-            <FormProc />
-            <FormId />
-            <FormTotals />
-
-            <h2 id="guia-de-outras-despesas" style={{ textAlign: 'center', margin: "40px 0px" }}>
-                Guia de Outras Despesas
-            </h2>
-            <FormOtherProc />
-            <FormTotalsOtherProc /> */}
-            <Button htmlType='submit' type='primary' >add</Button>
-        </Form>
+                <h2 id="guia-de-outras-despesas" style={{ textAlign: 'center', margin: "40px 0px" }}>
+                    Guia de Outras Despesas
+                </h2>
+                <FormOtherProc />
+                <FormTotalsOtherProc /> */}
+                <Button htmlType='submit' type='primary' >add</Button>
+            </Form>
+        </FormProvider>
     )
 }
 export default Forms
