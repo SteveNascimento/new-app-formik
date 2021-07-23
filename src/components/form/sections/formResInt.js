@@ -1,85 +1,74 @@
 import React from 'react'
-import { Row, Col, Input, Form, /* DatePicker */ } from 'antd'
-import { useFormContext, Controller } from 'react-hook-form'
+import { Row, Col, Input, Form, DatePicker } from 'antd'
+import { useFormContext } from 'react-hook-form'
+import {defaultValues} from '../defaultValues'
 
 import {
-    _1REG_ANS, _3GUIA_SOLIC_INT, /*_2GN_GUIA_PREST, _4DT_DE_AUT,
-    _5SENHA_GUI_RES_INT, _6VAL_DE_SENHA, _7N_GUIA_OP */
+    _1REG_ANS, _3GUIA_SOLIC_INT, _2GN_GUIA_PREST, _4DT_DE_AUT,
+    _5SENHA_GUI_RES_INT, _6VAL_DE_SENHA, _7N_GUIA_OP
 } from '../fieldsNames'
 
 
 
 export default function FormResInt() {
+    const { register, setValue, formState: {errors}} = useFormContext();
 
-    /* const Controlador = () => (
-        <Controller
-            name="test"
-            render={({
-                field: { onChange, onBlur, value, name, ref },
-                fieldState: { invalid, isTouched, isDirty, error },
-                formState,
-            }) => (
-                <Input
-                onBlur={onBlur}
-                onChange={onChange}
-                checked={value}
-                inputRef={ref}
-                />
-            )}
-        />
-    ) */
+    const InputField = (props) => {
+        const { label, name} = props;
+        return (
+            <Form.Item 
+                label={label}
+                validateStatus={errors[name] ? 'error' : ''}
+                help={errors[name] ? errors[name].message : ''}
+                hasFeedback
+            >
+                <Input name={name} {...register(name)} defaultValue={defaultValues[name]}
+                    onChange={e => setValue(name, e.target.value)}/>
+            </Form.Item>
+        )
+    }
+    
+    const DatePickerField = (props) => {
+        const { label, name} = props;
+        return (
+            <Form.Item 
+                label={label}
+                validateStatus={errors[name] ? 'error' : ''}
+                help={errors[name] ? errors[name].message : ''}
+                hasFeedback
+            >
+                <DatePicker name={name} {...register(name)} defaultValue={defaultValues[name]}
+                    onChange={e => setValue(name, e.target.value)}/>
+            </Form.Item>
+        )
+    }
 
-    const {register, setValue, formState: {errors}} = useFormContext();
 
-    const getChangeHandlerWithValue = name => value => {
-        setValue(name, value);
-    };
 
     return (
         <section id="guia-resumo-internacao">
-            <Row align='bottom' gutter={[10, 10]}>
+            <Row align='top' gutter={[10, 10]}>
                 <Col className="coluna">
-                    <Form.Item label="1 - Registro ANS">
-                        <Input onChange={getChangeHandlerWithValue(_1REG_ANS)} {...register(_1REG_ANS)} />
-                        <p>{errors._1REG_ANS?.message}</p>
-                        {/* <Controlador name={_1REG_ANS}/> */}
-                    </Form.Item>
+                    <InputField  label="1 - Registro ANS" name={_1REG_ANS} />
                 </Col>
                 <Col className="coluna">
-                    <Form.Item label="3 - Guia Solicitação de Internação">
-                        <Input onChange={getChangeHandlerWithValue(_3GUIA_SOLIC_INT)} {...register(_3GUIA_SOLIC_INT)} />
-                        <p>{errors._3GUIA_SOLIC_INT?.message}</p>
-                    </Form.Item>
-                </Col>
-                {/*<Col className="coluna">
-                    <Form.Item name={_2GN_GUIA_PREST} label="2 - Nº Guia no Prestador">
-                        <Input {...props.reg.register(_2GN_GUIA_PREST)} />
-                    </Form.Item>
+                    <InputField label="3 - Guia Solicitação de Internação" name={_3GUIA_SOLIC_INT}/>
                 </Col>
                 <Col className="coluna">
-                    <Form.Item name={_4DT_DE_AUT} label="4 - Data da Autorização">
-                        <DatePicker {...props.reg.register(_4DT_DE_AUT)}
-                            onChange={getChangeHandlerWithValue(_4DT_DE_AUT)}
-                            placeholder="Data" />
-                    </Form.Item>
+                    <InputField label="2 - Nº Guia no Prestador" name={_2GN_GUIA_PREST} />
                 </Col>
-                <Col className="coluna">
-                    <Form.Item name={_5SENHA_GUI_RES_INT} label="5 - Senha">
-                        <Input {...props.reg.register(_5SENHA_GUI_RES_INT)} />
-                    </Form.Item>
-                </Col>
-                <Col className="coluna">
-                    <Form.Item name={_6VAL_DE_SENHA} label="6 - Validade da Senha">
-                        <DatePicker {...props.reg.register(_6VAL_DE_SENHA)}
-                            onChange={getChangeHandlerWithValue(_6VAL_DE_SENHA)}
-                            placeholder="Data" />
-                    </Form.Item>
-                </Col>
-                <Col className="coluna">
-                    <Form.Item name={_7N_GUIA_OP} label="7 - Nº Guia Operadora">
-                        <Input {...props.reg.register(_7N_GUIA_OP)} />
-                    </Form.Item>
+                {/* <Col className="coluna">
+                    <DatePickerField label="4 - Data da Autorização" name={_4DT_DE_AUT} />
                 </Col> */}
+                <Col className="coluna">
+                    <InputField label="5 - Senha" name={_5SENHA_GUI_RES_INT} />
+                </Col>
+                {/* <Col className="coluna">
+                    <DatePickerField label="6 - Validade da Senha" name={_6VAL_DE_SENHA} />
+                </Col> */}
+                <Col className="coluna">
+                    <InputField label="7 - Nº Guia Operadora" name={_7N_GUIA_OP} />
+                </Col>
             </Row>
         </section>
     )

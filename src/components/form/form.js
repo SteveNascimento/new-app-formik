@@ -21,7 +21,6 @@ import FormTotalsOtherProc from './sections/formTotalsOtherProc' */
 const Forms = () => {
 
     const registro = useForm({
-        mode:'onBlur',
         resolver: yupResolver(validationSchema),
         defaultValues: defaultValues
     })
