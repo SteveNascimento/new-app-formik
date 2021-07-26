@@ -2,7 +2,7 @@ export const defaultValues = {
     _1REG_ANS: '330281',
     _3GUIA_SOLIC_INT: undefined,
     _2GN_GUIA_PREST: undefined,
-    _4DT_DE_AUT: new Date(),
+    _4DT_DE_AUT: undefined,
     _5SENHA_GUI_RES_INT: undefined,
     _6VAL_DE_SENHA: undefined,
     _7N_GUIA_OP: undefined,

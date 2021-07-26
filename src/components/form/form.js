@@ -8,8 +8,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 /* import { submitForm } from '../../services/submit-service' */
 
 import FormResInt from './sections/formResInt'
-/* import FormDadBenef from './sections/formDadBenef'
-import FormDadContr from './sections/formDadContr'
+import FormDadBenef from './sections/formDadBenef'
+/* import FormDadContr from './sections/formDadContr'
 import FormDadInt from './sections/formDadInt'
 import FormDec from './sections/formDec'
 import FormProc from './sections/formProc'
@@ -40,8 +40,8 @@ const Forms = () => {
 
                 <FormResInt />
 
-                {/* <FormDadBenef />
-                <FormDadContr />
+                <FormDadBenef />
+                {/* <FormDadContr />
                 <FormDadInt />
                 <FormDec />
                 <FormProc />
