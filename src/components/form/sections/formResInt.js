@@ -1,44 +1,57 @@
 import React from 'react'
 import { Row, Col, Input, Form, DatePicker } from 'antd'
-import { useFormContext } from 'react-hook-form'
-import { defaultValues } from '../defaultValues'
+import { Controller } from 'react-hook-form'
 
 import {
     _1REG_ANS, _3GUIA_SOLIC_INT, _2GN_GUIA_PREST, _4DT_DE_AUT,
     _5SENHA_GUI_RES_INT, _6VAL_DE_SENHA, _7N_GUIA_OP
 } from '../fieldsNames'
-
 export default function FormResInt() {
-    const { register, setValue, formState: { errors } } = useFormContext();
 
     const InputField = (props) => {
         const { label, name } = props;
         return (
-            <Form.Item
-                label={label}
-                validateStatus={errors[name] ? 'error' : ''}
-                help={errors[name] ? errors[name].message : ''}
-                hasFeedback
+            <Controller
+                name={name}
+                render={({ field, fieldState: { error } }) => {
+                    return (
+                        <Form.Item
+                            label={label}
+                            validateStatus={error ? 'error' : ''}
+                            help={error ? error.message : ''}
+                            hasFeedback
+                        >
+                            <Input {...field} />
+                        </Form.Item>
+                    )
+                }}
             >
-                <Input name={name} {...register(name)} defaultValue={defaultValues[name]}
-                    onChange={e => setValue(name, e.target.value)} />
-            </Form.Item>
+            </Controller>
         )
     }
 
     const DatePickerField = (props) => {
         const { label, name } = props;
         return (
-            <Form.Item
-                label={label}
-                validateStatus={errors[name] ? 'error' : ''}
-                help={errors[name] ? errors[name].message : ''}
-                hasFeedback
+            <Controller
+                name={name}
+                render={({ field, fieldState: { error } }) => {
+                    return (
+                        <Form.Item
+                            label={label}
+                            validateStatus={error ? 'error' : ''}
+                            help={error ? error.message : ''}
+                        >
+                            <DatePicker
+                                {...field}
+                                placeholder={'Data'}
+                                format={'DD/MM/YYYY'}
+                            />
+                        </Form.Item>
+                    )
+                }}
             >
-                <DatePicker placeholder={'Data'} name={name} {...register(name)} defaultValue={defaultValues[name]}
-                    onChange={(e, _) => e != null ? setValue(name, e.d) : setValue(name, undefined)}
-                    format={'DD/MM/YYYY'} />
-            </Form.Item>
+            </Controller>
         )
     }
 

@@ -1,7 +1,6 @@
 import React from 'react'
 import { Divider, Row, Col, Input, Select, DatePicker, Form } from 'antd'
-import { useFormContext } from 'react-hook-form'
-import { defaultValues } from '../defaultValues'
+import { Controller } from 'react-hook-form'
 
 import {
     _8NUM_CART, _9VAL_CART, _10NOME_BENEF, _11CART_NAC_SAUD,
@@ -10,53 +9,73 @@ import {
 
 export default function FormDadBenef() {
 
-    const { register, setValue, formState: { errors } } = useFormContext();
-
     const InputField = (props) => {
         const { label, name } = props;
         return (
-            <Form.Item
-                label={label}
-                validateStatus={errors[name] ? 'error' : ''}
-                help={errors[name] ? errors[name].message : ''}
-                hasFeedback
+            <Controller
+                name={name}
+                render={({ field, fieldState: { error } }) => {
+                    return (
+                        <Form.Item
+                            label={label}
+                            validateStatus={error ? 'error' : ''}
+                            help={error ? error.message : ''}
+                            hasFeedback
+                        >
+                            <Input {...field} />
+                        </Form.Item>
+                    )
+                }}
             >
-                <Input name={name} {...register(name)} defaultValue={defaultValues[name]}
-                    onChange={e => setValue(name, e.target.value)} />
-            </Form.Item>
+            </Controller>
         )
     }
 
     const DatePickerField = (props) => {
         const { label, name } = props;
         return (
-            <Form.Item
-                label={label}
-                validateStatus={errors[name] ? 'error' : ''}
-                help={errors[name] ? errors[name].message : ''}
-                hasFeedback
+            <Controller
+                name={name}
+                render={({ field, fieldState: { error } }) => {
+                    return (
+                        <Form.Item
+                            label={label}
+                            validateStatus={error ? 'error' : ''}
+                            help={error ? error.message : ''}
+                        >
+                            <DatePicker
+                                {...field}
+                                placeholder={'Data'}
+                                format={'DD/MM/YYYY'}
+                            />
+                        </Form.Item>
+                    )
+                }}
             >
-                <DatePicker placeholder={'Data'} name={name} {...register(name)} defaultValue={defaultValues[name]}
-                    onChange={(e, _) => e != null ? setValue(name, e.d) : setValue(name, undefined)}
-                    format={'DD/MM/YYYY'} />
-            </Form.Item>
+            </Controller>
         )
     }
 
     const SelectField = (props) => {
         const { label, name, children } = props;
         return (
-            <Form.Item
-                label={label}
-                validateStatus={errors[name] ? 'error' : ''}
-                help={errors[name] ? errors[name].message : ''}
-                hasFeedback
+            <Controller
+                name={name}
+                render={({ field, fieldState: { error } }) => {
+                    return (
+                        <Form.Item
+                            label={label}
+                            validateStatus={error ? 'error' : ''}
+                            help={error ? error.message : ''}
+                        >
+                            <Select {...field}>
+                                {children}
+                            </Select>
+                        </Form.Item>
+                    )
+                }}
             >
-                <Select name={name} {...register(name)} defaultValue={defaultValues[name]}
-                    onChange={e => setValue(name, e)}>
-                    {children}
-                </Select>
-            </Form.Item>
+            </Controller>
         )
     }
 
@@ -68,7 +87,7 @@ export default function FormDadBenef() {
                     <InputField name={_8NUM_CART} label="8 - Número da Carteira" />
                 </Col>
                 <Col className="coluna">
-                    <DatePickerField name={_9VAL_CART} placeholder="Data" />
+                    <DatePickerField name={_9VAL_CART} label="9 - Validade da Carteira" />
                 </Col>
                 <Col className="coluna">
                     <InputField name={_10NOME_BENEF} label="10 - Nome" />
