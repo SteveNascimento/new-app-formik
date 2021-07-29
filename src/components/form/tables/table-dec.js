@@ -2,6 +2,12 @@ import React from 'react'
 import { Table, Popconfirm, Button } from 'antd'
 import { useStoreActions, useStoreState } from 'easy-peasy';
 import { DeleteOutlined } from '@ant-design/icons';
+import {
+    _30TIPO_DE_DECL,
+    _31CID_OBITO,
+    _32NUMERO_DECL,
+    _33OBITO_RN
+} from '../fieldsNames'
 
 export default function TableDec() {
 
@@ -19,23 +25,23 @@ export default function TableDec() {
         },
         {
             title: 'Tipo da declaração',
-            dataIndex: 'tipoDec',
-            key: 'tipoDec',
+            dataIndex: [_30TIPO_DE_DECL],
+            key: [_30TIPO_DE_DECL],
         },
         {
             title: 'Diagnótico de óbito',
-            dataIndex: 'diagObit',
-            key: 'diagObit',
+            dataIndex: [_31CID_OBITO],
+            key: [_31CID_OBITO],
         },
         {
             title: 'Número da declaração',
-            dataIndex: 'numDec',
-            key: 'numDec',
+            dataIndex: [_32NUMERO_DECL],
+            key: [_32NUMERO_DECL],
         },
         {
             title: 'Óbito do RN',
-            dataIndex: 'obitoRN',
-            key: 'obitoRN',
+            dataIndex: [_33OBITO_RN],
+            key: [_33OBITO_RN],
         },
         {
             title: '',

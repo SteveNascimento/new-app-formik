@@ -4,6 +4,7 @@ import { Controller, useFormContext } from 'react-hook-form'
 import TableDec from './../tables/table-dec'
 import { PlusOutlined } from '@ant-design/icons';
 import { useStoreActions } from 'easy-peasy';
+import { TableDecValidationSchema } from '../validationSchema';
 
 import {
     _30TIPO_DE_DECL,
@@ -21,14 +22,20 @@ export default function FormDadBenef() {
 
     const { getValues } = useFormContext()
 
-    const teste = () => {
+    const addOnTable = () => {
         const values = getValues()
-        addDecOnList({
-            tipoDec: values[_30TIPO_DE_DECL] === 2 ? 'Óbito' : 'Nascimento',
-            numDec: values[_32NUMERO_DECL],
-            diagObit: values[_31CID_OBITO],
-            obitoRN: values[_33OBITO_RN] ? 'True' : 'False',
-        })
+        const valuesForValidation = {
+            [_30TIPO_DE_DECL]: values[_30TIPO_DE_DECL] === 2 ? 'Óbito' : 'Nascimento',
+            [_32NUMERO_DECL]: values[_32NUMERO_DECL],
+            [_31CID_OBITO]: values[_31CID_OBITO],
+            [_33OBITO_RN]: values[_33OBITO_RN] ? 'True' : 'False',
+        }
+        TableDecValidationSchema
+            .isValid(valuesForValidation)
+            .then((valid) => {
+                if (valid) addDecOnList(valuesForValidation)
+            })
+
     }
 
     const InputField = (props) => {
@@ -101,7 +108,7 @@ export default function FormDadBenef() {
             </Row>
             <Button
                 style={{ margin: '25px 10px', float: 'right' }}
-                onClick={teste}
+                onClick={addOnTable}
                 type="primary"
                 size='small'
             >
