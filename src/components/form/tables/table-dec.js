@@ -1,7 +1,7 @@
 import React from 'react'
 import { Table, Popconfirm, Button } from 'antd'
 import { useStoreActions, useStoreState } from 'easy-peasy';
-import { PlusOutlined, DeleteOutlined } from '@ant-design/icons';
+import { DeleteOutlined } from '@ant-design/icons';
 
 export default function TableDec() {
 
@@ -9,10 +9,6 @@ export default function TableDec() {
 
     const removeDecFromList = useStoreActions(
         actions => actions.tableDec.removeFromList
-    )
-
-    const addToList = useStoreActions(
-        actions => actions.tableDec.addToList
     )
 
     const columns = [
@@ -53,21 +49,6 @@ export default function TableDec() {
 
     return (
         <>
-            <Button
-                style={{ margin: '25px 10px', float: 'right' }}
-                onClick={() => {
-                    addToList({
-                        tipoDec: 'Nascimento',
-                        numDec: 32,
-                        diagObit: 'Diagnóstico',
-                        obitoRN: 'Sim',
-                    })
-                }}
-                type="primary"
-                size='small'
-            >
-                <PlusOutlined /> Adicionar
-            </Button>
             <Table name='dec-table' rowKey={(row) => `${row.id}`} bordered size="small" columns={columns} dataSource={dataSource} />
         </>
     )

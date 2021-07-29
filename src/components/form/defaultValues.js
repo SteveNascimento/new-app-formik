@@ -69,7 +69,7 @@ export const defaultValues = {
     _61TOTAL: 'Teste',
     _81OBS_TOTAL: undefined,
     // Section 8
-    _106CD_REALIZADA: undefined,
+    _106CD_REALIZADA: 1,
     _107DATA_DESP: undefined,
     _108HORA_INICIO_DESP: undefined,
     _109HORA_FIM_DESP: undefined,

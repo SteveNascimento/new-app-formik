@@ -52,23 +52,25 @@ export default function FormDadBenef() {
     const SelectField = (props) => {
         const { label, name, children } = props;
         return (
-            <Controller
-                name={name}
-                render={({ field, fieldState: { error } }) => {
-                    return (
-                        <Form.Item
-                            label={label}
-                            validateStatus={error ? 'error' : ''}
-                            help={error ? error.message : ''}
-                        >
-                            <Select {...field}>
-                                {children}
-                            </Select>
-                        </Form.Item>
-                    )
-                }}
-            >
-            </Controller>
+            <Col>
+                <Controller
+                    name={name}
+                    render={({ field, fieldState: { error } }) => {
+                        return (
+                            <Form.Item
+                                label={label}
+                                validateStatus={error ? 'error' : ''}
+                                help={error ? error.message : ''}
+                            >
+                                <Select {...field}>
+                                    {children}
+                                </Select>
+                            </Form.Item>
+                        )
+                    }}
+                >
+                </Controller>
+            </Col>
         )
     }
 
@@ -126,15 +128,15 @@ export default function FormDadBenef() {
             <Divider orientation="left" style={{ fontSize: "20px", fontWeight: "bold" }}>Códigos de Despesas Realizadas</Divider>
             <Row align='top' gutter={[10, 10]}>
                 <Col>
-                    <SelectField name={_106CD_REALIZADA} label="6 - CD" >
-                        <Select.Option value={'1'}>1 - Gases Medicinais</Select.Option>
-                        <Select.Option value={'2'}>2 - Medicamentos</Select.Option>
-                        <Select.Option value={'3'}>3 - Materiais</Select.Option>
-                        <Select.Option value={'4'}>4 - Taxas Diversas</Select.Option>
-                        <Select.Option value={'5'}>5 - Diárias</Select.Option>
-                        <Select.Option value={'6'}>6 - Aluguéis</Select.Option>
-                        <Select.Option value={'7'}>7 - Taxas/Aluguéis</Select.Option>
-                        <Select.Option value={'8'}>8 - OPME</Select.Option>
+                    <SelectField name={_106CD_REALIZADA} label="6 - CD">
+                        <Select.Option value={1}>1 - Gases Medicinais</Select.Option>
+                        <Select.Option value={2}>2 - Medicamentos</Select.Option>
+                        <Select.Option value={3}>3 - Materiais</Select.Option>
+                        <Select.Option value={4}>4 - Taxas Diversas</Select.Option>
+                        <Select.Option value={5}>5 - Diárias</Select.Option>
+                        <Select.Option value={6}>6 - Aluguéis</Select.Option>
+                        <Select.Option value={7}>7 - Taxas/Aluguéis</Select.Option>
+                        <Select.Option value={8}>8 - OPME</Select.Option>
                     </SelectField>
                 </Col>
                 <Col>

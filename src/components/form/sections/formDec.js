@@ -1,7 +1,9 @@
 import React from 'react'
-import { Divider, Row, Col, Form, Input, Select } from 'antd'
-import { Controller } from 'react-hook-form'
+import { Divider, Row, Col, Button, Form, Input, Select } from 'antd'
+import { Controller, useFormContext } from 'react-hook-form'
 import TableDec from './../tables/table-dec'
+import { PlusOutlined } from '@ant-design/icons';
+import { useStoreActions } from 'easy-peasy';
 
 import {
     _30TIPO_DE_DECL,
@@ -12,6 +14,22 @@ import {
 
 
 export default function FormDadBenef() {
+
+    const addDecOnList = useStoreActions(
+        actions => actions.tableDec.addToList
+    )
+
+    const { getValues } = useFormContext()
+
+    const teste = () => {
+        const values = getValues()
+        addDecOnList({
+            tipoDec: values[_30TIPO_DE_DECL] === 2 ? 'Óbito' : 'Nascimento',
+            numDec: values[_32NUMERO_DECL],
+            diagObit: values[_31CID_OBITO],
+            obitoRN: values[_33OBITO_RN] ? 'True' : 'False',
+        })
+    }
 
     const InputField = (props) => {
         const { label, name } = props;
@@ -47,7 +65,7 @@ export default function FormDadBenef() {
                             validateStatus={error ? 'error' : ''}
                             help={error ? error.message : ''}
                         >
-                            <Select {...field}>
+                            <Select {...field} >
                                 {children}
                             </Select>
                         </Form.Item>
@@ -81,6 +99,14 @@ export default function FormDadBenef() {
                     </SelectField>
                 </Col>
             </Row>
+            <Button
+                style={{ margin: '25px 10px', float: 'right' }}
+                onClick={teste}
+                type="primary"
+                size='small'
+            >
+                <PlusOutlined /> Adicionar
+            </Button>
             <TableDec />
         </section >
     )
