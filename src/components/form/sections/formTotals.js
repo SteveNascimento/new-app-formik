@@ -14,7 +14,7 @@ import {
     _81OBS_TOTAL
 } from '../fieldsNames'
 
-export default function FormDadBenef() {
+export default function FormTotals() {
 
     const InputField = (props) => {
         const { label, name } = props;

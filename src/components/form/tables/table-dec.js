@@ -13,6 +13,7 @@ export default function TableDec() {
 
     const dataSource = useStoreState(state => state.tableDec.decList)
 
+    
     const removeDecFromList = useStoreActions(
         actions => actions.tableDec.removeFromList
     )
@@ -53,9 +54,17 @@ export default function TableDec() {
         },
     ]
 
+    
+
     return (
         <>
-            <Table name='dec-table' rowKey={(row) => `${row.id}`} bordered size="small" columns={columns} dataSource={dataSource} />
+            <Table 
+            name='dec-table'
+            bordered
+            size="small"
+            rowKey={(row) => `${row.id}`}
+            columns={columns}
+            dataSource={dataSource} />
         </>
     )
 }

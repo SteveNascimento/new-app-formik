@@ -15,7 +15,7 @@ import {
 } from '../fieldsNames'
 
 
-export default function FormDadBenef() {
+export default function FormId() {
 
     const InputField = (props) => {
         const { label, name } = props;

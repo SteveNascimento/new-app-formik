@@ -1,10 +1,12 @@
 import React from 'react'
 import {
-    Divider, Row, Col,
+    Divider, Row, Col, Button, 
     Form, Input, Select, TimePicker, DatePicker
 } from 'antd'
 import TableProc from './../tables/table-proc'
-import { Controller } from 'react-hook-form'
+import { Controller, useFormContext } from 'react-hook-form'
+import { TableProcValidationSchema } from '../validationSchema'
+import { PlusOutlined } from '@ant-design/icons';
 
 import {
     _34DATA_PROC,
@@ -20,9 +22,69 @@ import {
     _44VALOR_UNIT_PROC,
     _45VALOR_TOT_PROC,
 } from '../fieldsNames'
+import { useStoreActions } from 'easy-peasy'
 
 
-export default function FormDadBenef() {
+export default function FormDadProc() {
+
+    const listNames = [
+        _34DATA_PROC,
+        _35HORA_INICIO_PROC,
+        _36HORA_FIM_PROC,
+        _37TAB_PROC,
+        _38COD_PROC,
+        _39DESC_PROC,
+        _40QTD_PROC,
+        _41VIA_PROC,
+        _42TEC_PROC,
+        _43RED_ACRESC,
+        _44VALOR_UNIT_PROC,
+        _45VALOR_TOT_PROC]
+
+    const addProcOnList = useStoreActions(
+        actions => actions.tableProc.addToList
+    )
+
+    const { getValues, setError, clearErrors } = useFormContext()
+
+    const valuesFields = () => {
+        const values = getValues()
+        return {
+            _34DATA_PROC : values[_34DATA_PROC],
+            _35HORA_INICIO_PROC : values[_35HORA_INICIO_PROC],
+            _36HORA_FIM_PROC : values[_36HORA_FIM_PROC],
+            _37TAB_PROC : values[_37TAB_PROC],
+            _38COD_PROC : values[_38COD_PROC],
+            _39DESC_PROC : values[_39DESC_PROC],
+            _40QTD_PROC : values[_40QTD_PROC],
+            _41VIA_PROC : values[_41VIA_PROC],
+            _42TEC_PROC : values[_42TEC_PROC],
+            _43RED_ACRESC : values[_43RED_ACRESC],
+            _44VALOR_UNIT_PROC : values[_44VALOR_UNIT_PROC],
+            _45VALOR_TOT_PROC : values[_45VALOR_TOT_PROC],
+            
+        }
+    }
+
+    const addOnTable = () => {
+        const values = valuesFields()
+        TableProcValidationSchema
+            .validate(values, {abortEarly:false})
+            .then(values => {
+                clearErrors(listNames)
+                addProcOnList(values)
+            })
+            .catch(err => {
+                for (let fieldError of err.inner) {
+                    setError(fieldError.path,
+                        {
+                            type: fieldError.name,
+                            message: fieldError.message
+                        }
+                    )
+                }
+            })
+    }
 
     const InputField = (props) => {
         const { label, name } = props;
@@ -121,7 +183,7 @@ export default function FormDadBenef() {
     return (
         <section id="procedimentos-e-exames-realizados">
             <Divider orientation="left" style={{ fontSize: "20px", fontWeight: "bold" }}>Procedimentos e Exames Realizados</Divider>
-            <Row align='bottom' gutter={[20, 10]}>
+            <Row align='top' gutter={[20, 10]}>
                 <Col>
                     <DatePickerField name={_34DATA_PROC} label="34 - Data" />
                 </Col>
@@ -145,15 +207,15 @@ export default function FormDadBenef() {
                 </Col>
                 <Col>
                     <SelectField name={_41VIA_PROC} label="41 - Via" >
-                        <Select.Option value={1}>Unica</Select.Option>
-                        <Select.Option value={2}>Mesma Via</Select.Option>
-                        <Select.Option value={3}>Diferentes Vias</Select.Option>
+                        <Select.Option value={'Unica'}>Unica</Select.Option>
+                        <Select.Option value={'Mesma Via'}>Mesma Via</Select.Option>
+                        <Select.Option value={'Diferentes Vias'}>Diferentes Vias</Select.Option>
                     </SelectField>
                 </Col>
                 <Col>
                     <SelectField name={_42TEC_PROC} label="42 - Téc" >
-                        <Select.Option value={1}>Convencional</Select.Option>
-                        <Select.Option value={2}>Videolaparoscopia</Select.Option>
+                        <Select.Option value={'Convencional'}>Convencional</Select.Option>
+                        <Select.Option value={'Videolaparoscopia'}>Videolaparoscopia</Select.Option>
                     </SelectField>
                 </Col>
                 <Col>
@@ -166,6 +228,14 @@ export default function FormDadBenef() {
                     <InputField name={_45VALOR_TOT_PROC} label="45 - Valor Total" />
                 </Col>
             </Row>
+            <Button
+                style={{ margin: '25px 10px', float: 'right' }}
+                onClick={addOnTable}
+                type="primary"
+                size='small'
+            >
+                <PlusOutlined /> Adicionar
+            </Button>
             <TableProc />
         </section>
     )

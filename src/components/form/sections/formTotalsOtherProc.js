@@ -13,7 +13,7 @@ import {
 } from '../fieldsNames'
 
 
-export default function FormDadBenef() {
+export default function FormTotalsOtherProc() {
 
     const InputField = (props) => {
         const { label, name } = props;

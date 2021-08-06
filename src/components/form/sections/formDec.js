@@ -14,7 +14,7 @@ import {
 } from '../fieldsNames'
 
 
-export default function FormDadBenef() {
+export default function FormDec() {
 
     const listNames = [
         _30TIPO_DE_DECL,
@@ -34,13 +34,12 @@ export default function FormDadBenef() {
             [_30TIPO_DE_DECL]: values[_30TIPO_DE_DECL] === 2 ? 'Óbito' : 'Nascimento',
             [_31CID_OBITO]: values[_31CID_OBITO],
             [_32NUMERO_DECL]: values[_32NUMERO_DECL],
-            [_33OBITO_RN]: values[_33OBITO_RN] ? 'True' : 'False',
+            [_33OBITO_RN]: values[_33OBITO_RN] ? 'Sim' : 'Não',
         }
     }
 
     const addOnTable = () => {
         const values = valuesFields()
-
         TableDecValidationSchema
             .validate(values, {abortEarly:false})
             .then(values => {
