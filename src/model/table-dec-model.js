@@ -4,7 +4,7 @@ import { action } from 'easy-peasy'
 const tableDecModel = {
     decList: [],
 
-    count: 3,
+    count: 0,
 
     addToList: action((state, payload) => {
         state.count += 1

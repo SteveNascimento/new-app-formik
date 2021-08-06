@@ -66,7 +66,7 @@ const Forms = () => {
                 </h2>
                 <FormOtherProc />
                 <FormTotalsOtherProc />
-                <Button loading={adding} htmlType="submit" type='primary' >add</Button>
+                <Button loading={adding} htmlType="submit" type='primary' >Enviar</Button>
             </Form>
         </FormProvider>
     )

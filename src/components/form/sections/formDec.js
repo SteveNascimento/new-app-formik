@@ -16,26 +16,47 @@ import {
 
 export default function FormDadBenef() {
 
+    const listNames = [
+        _30TIPO_DE_DECL,
+        _31CID_OBITO,
+        _32NUMERO_DECL,
+        _33OBITO_RN]
+
     const addDecOnList = useStoreActions(
         actions => actions.tableDec.addToList
     )
 
-    const { getValues } = useFormContext()
+    const { getValues, setError, clearErrors } = useFormContext()
 
-    const addOnTable = () => {
+    const valuesFields = () => {
         const values = getValues()
-        const valuesForValidation = {
+        return {
             [_30TIPO_DE_DECL]: values[_30TIPO_DE_DECL] === 2 ? 'Óbito' : 'Nascimento',
-            [_32NUMERO_DECL]: values[_32NUMERO_DECL],
             [_31CID_OBITO]: values[_31CID_OBITO],
+            [_32NUMERO_DECL]: values[_32NUMERO_DECL],
             [_33OBITO_RN]: values[_33OBITO_RN] ? 'True' : 'False',
         }
-        TableDecValidationSchema
-            .isValid(valuesForValidation)
-            .then((valid) => {
-                if (valid) addDecOnList(valuesForValidation)
-            })
+    }
 
+    const addOnTable = () => {
+        const values = valuesFields()
+
+        TableDecValidationSchema
+            .validate(values, {abortEarly:false})
+            .then(values => {
+                clearErrors(listNames)
+                addDecOnList(values)
+            })
+            .catch(err => {
+                for (let fieldError of err.inner) {
+                    setError(fieldError.path,
+                        {
+                            type: fieldError.name,
+                            message: fieldError.message
+                        }
+                    )
+                }
+            })
     }
 
     const InputField = (props) => {
@@ -43,7 +64,7 @@ export default function FormDadBenef() {
         return (
             <Controller
                 name={name}
-                render={({ field, fieldState: { error } }) => {
+                render={({ field, fieldState:{error} }) => {
                     return (
                         <Form.Item
                             label={label}
@@ -86,7 +107,7 @@ export default function FormDadBenef() {
     return (
         <section id="declaracoes">
             <Divider orientation="left" style={{ fontSize: "20px", fontWeight: "bold" }}>Declarações</Divider>
-            <Row align='bottom' gutter={[20, 10]} >
+            <Row align='top' gutter={[20, 10]} >
                 <Col>
                     <SelectField name={_30TIPO_DE_DECL} label="30 - Tipo Declaracao" >
                         <Select.Option value={1}>Nascimento</Select.Option>
